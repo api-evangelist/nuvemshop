@@ -1,0 +1,70 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Nuvemshop / Tiendanube
+providerId: nuvemshop
+created: '2026-07-12'
+modified: '2026-07-12'
+reconciled: true
+tags:
+- E-commerce
+- Latin America
+- Rate Limiting
+- Quotas
+- Throttling
+- Leaky Bucket
+description: >-
+  The Nuvemshop / Tiendanube Admin API is rate limited per store using a leaky
+  bucket algorithm. Each store gets a bucket that holds a default of 40 requests
+  and drains (leaks) at 2 requests per second. Stores on higher-tier plans
+  (Next / Evolution) get the limit multiplied by 10 (a 400-request bucket
+  draining at 20 requests/second). When the bucket is full, additional requests
+  are rejected with HTTP 429. Every response carries rate-limit headers so
+  clients can pace themselves.
+notes: >-
+  Values are grounded in the live documentation as of the review date. The
+  x10 multiplier applies to stores on the higher commercial plan tier; verify
+  the exact plan mapping in the provider documentation, as plan names differ by
+  country.
+sources:
+- https://tiendanube.github.io/api-documentation/intro
+responseCodes:
+  throttled: 429
+headers:
+- name: x-rate-limit-limit
+  description: Total number of requests the bucket can hold.
+- name: x-rate-limit-remaining
+  description: Remaining capacity in the bucket before it fills.
+- name: x-rate-limit-reset
+  description: Milliseconds remaining to completely empty (drain) the bucket.
+limits:
+- name: Default Bucket Size
+  scope: store
+  metric: requests
+  limit: 40
+  notes: Maximum number of requests the per-store bucket holds by default.
+- name: Default Leak Rate
+  scope: store
+  metric: requests_per_second
+  limit: 2
+  notes: The bucket drains at 2 requests per second, allowing sustained ~2 rps.
+- name: Higher-Tier Bucket Size
+  scope: store
+  metric: requests
+  limit: 400
+  notes: For stores on higher plan tiers (Next / Evolution), the limit is multiplied by 10.
+- name: Higher-Tier Leak Rate
+  scope: store
+  metric: requests_per_second
+  limit: 20
+  notes: Higher-tier stores drain at 20 requests per second.
+policies:
+- name: Leaky Bucket
+  description: Each store has a bucket that fills with incoming requests and drains at a fixed rate; overflow returns 429.
+- name: Plan-Based Scaling
+  description: Higher commercial plan tiers receive a 10x larger bucket and leak rate.
+- name: Backoff Strategy
+  description: Clients should read x-rate-limit-remaining / x-rate-limit-reset and back off (exponential backoff with jitter) before the bucket overflows.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

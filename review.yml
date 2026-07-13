@@ -1,0 +1,168 @@
+aid: nuvemshop
+name: Nuvemshop / Tiendanube
+review:
+  question: Does Nuvemshop expose a documented public WebSocket API?
+  answer: false
+  date: '2026-07-12'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was authored. Nuvemshop / Tiendanube's public API is a
+    request/response REST Admin API over HTTPS. Its only server-push mechanism
+    is webhooks - the platform POSTs event notifications (order/created,
+    product/updated, etc.) to an HTTPS callback URL the app registers. Webhooks
+    are server-to-endpoint HTTP callbacks, not a WebSocket or SSE transport, so
+    there is no bidirectional/streaming socket surface to model. No documented
+    wss:// endpoint exists.
+findings:
+  summary: |
+    Nuvemshop (Tiendanube) does not publish a documented public WebSocket API.
+    The platform exposes a store-scoped REST Admin API under
+    https://api.tiendanube.com/2025-03/{store_id} (and the Brazil mirror
+    https://api.nuvemshop.com.br/2025-03/{store_id}; the legacy
+    https://api.tiendanube.com/v1/{store_id} path remains available). Apps
+    authenticate with OAuth 2 (authorization code grant) and send the resulting
+    non-expiring access token in a NON-STANDARD header - `Authentication: bearer
+    ACCESS_TOKEN` (header name is `Authentication`, not `Authorization`, and
+    `bearer` must be lowercase) - plus a required descriptive `User-Agent`
+    header. Event delivery is via registered webhooks (HTTP POST callbacks), not
+    a socket. No realtime, bidirectional, or streaming WebSocket (ws:// or
+    wss://) endpoint is documented anywhere in the API reference.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.tiendanube.com/2025-03/{store_id}
+      documented: true
+      note: >-
+        Store-scoped Admin API. Brazil mirror api.nuvemshop.com.br; legacy
+        /v1/{store_id} path still supported.
+    - protocol: Webhook
+      scheme: https
+      documented: true
+      note: >-
+        The platform POSTs event notifications (e.g. order/created,
+        product/updated, customer/created) to a registered HTTPS URL.
+        Server-to-endpoint HTTP callback, not WebSocket.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: >-
+        No WebSocket endpoint is documented in the Nuvemshop / Tiendanube API
+        reference as of the review date.
+  authNote: >-
+    Non-standard auth header confirmed in the live docs: the header MUST be
+    named `Authentication` (using `Authorization` returns 401) and the `bearer`
+    prefix MUST be lowercase. A `User-Agent` header identifying the app and a
+    contact is required or the API returns 400.
+  rateLimitNote: >-
+    Per-store leaky bucket: default 40-request bucket draining at 2 req/s;
+    higher plan tiers (Next / Evolution) get 10x. Overflow returns 429 with
+    x-rate-limit-limit / x-rate-limit-remaining / x-rate-limit-reset headers.
+  endpointsConfirmedRest:
+    - GET    https://api.tiendanube.com/2025-03/{store_id}/products
+    - GET    https://api.tiendanube.com/2025-03/{store_id}/products/{id}
+    - GET    https://api.tiendanube.com/2025-03/{store_id}/products/sku/{sku}
+    - POST   https://api.tiendanube.com/2025-03/{store_id}/products
+    - PUT    https://api.tiendanube.com/2025-03/{store_id}/products/{id}
+    - DELETE https://api.tiendanube.com/2025-03/{store_id}/products/{id}
+    - PATCH  https://api.tiendanube.com/2025-03/{store_id}/products/stock-price
+    - GET    https://api.tiendanube.com/2025-03/{store_id}/products/{product_id}/variants
+    - GET    https://api.tiendanube.com/2025-03/{store_id}/products/{product_id}/variants/{id}
+    - POST   https://api.tiendanube.com/2025-03/{store_id}/products/{product_id}/variants
+    - PUT    https://api.tiendanube.com/2025-03/{store_id}/products/{product_id}/variants/{id}
+    - PUT    https://api.tiendanube.com/2025-03/{store_id}/products/{product_id}/variants
+    - PATCH  https://api.tiendanube.com/2025-03/{store_id}/products/{product_id}/variants
+    - DELETE https://api.tiendanube.com/2025-03/{store_id}/products/{product_id}/variants/{id}
+    - POST   https://api.tiendanube.com/2025-03/{store_id}/products/{product_id}/variants/stock
+    - GET    https://api.tiendanube.com/2025-03/{store_id}/products/{product_id}/images
+    - GET    https://api.tiendanube.com/2025-03/{store_id}/products/{product_id}/images/{image_id}
+    - POST   https://api.tiendanube.com/2025-03/{store_id}/products/{product_id}/images
+    - PUT    https://api.tiendanube.com/2025-03/{store_id}/products/{product_id}/images/{id}
+    - DELETE https://api.tiendanube.com/2025-03/{store_id}/products/{product_id}/images/{id}
+    - GET    https://api.tiendanube.com/2025-03/{store_id}/categories
+    - GET    https://api.tiendanube.com/2025-03/{store_id}/categories/{id}
+    - POST   https://api.tiendanube.com/2025-03/{store_id}/categories
+    - PUT    https://api.tiendanube.com/2025-03/{store_id}/categories/{id}
+    - DELETE https://api.tiendanube.com/2025-03/{store_id}/categories/{id}
+    - GET    https://api.tiendanube.com/2025-03/{store_id}/orders
+    - GET    https://api.tiendanube.com/2025-03/{store_id}/orders/{id}
+    - GET    https://api.tiendanube.com/2025-03/{store_id}/orders/{id}/history/values
+    - GET    https://api.tiendanube.com/2025-03/{store_id}/orders/{id}/history/editions
+    - GET    https://api.tiendanube.com/2025-03/{store_id}/orders/{id}/subscriptions
+    - POST   https://api.tiendanube.com/2025-03/{store_id}/orders
+    - PUT    https://api.tiendanube.com/2025-03/{store_id}/orders/{id}
+    - POST   https://api.tiendanube.com/2025-03/{store_id}/orders/{id}/close
+    - POST   https://api.tiendanube.com/2025-03/{store_id}/orders/{id}/open
+    - POST   https://api.tiendanube.com/2025-03/{store_id}/orders/{id}/cancel
+    - GET    https://api.tiendanube.com/2025-03/{store_id}/customers
+    - GET    https://api.tiendanube.com/2025-03/{store_id}/customers/{id}
+    - POST   https://api.tiendanube.com/2025-03/{store_id}/customers
+    - PUT    https://api.tiendanube.com/2025-03/{store_id}/customers/{id}
+    - DELETE https://api.tiendanube.com/2025-03/{store_id}/customers/{id}
+    - GET    https://api.tiendanube.com/2025-03/{store_id}/coupons
+    - GET    https://api.tiendanube.com/2025-03/{store_id}/coupons/{id}
+    - POST   https://api.tiendanube.com/2025-03/{store_id}/coupons
+    - PUT    https://api.tiendanube.com/2025-03/{store_id}/coupons/{id}
+    - DELETE https://api.tiendanube.com/2025-03/{store_id}/coupons/{id}
+    - GET    https://api.tiendanube.com/2025-03/{store_id}/webhooks
+    - GET    https://api.tiendanube.com/2025-03/{store_id}/webhooks/{id}
+    - POST   https://api.tiendanube.com/2025-03/{store_id}/webhooks
+    - PUT    https://api.tiendanube.com/2025-03/{store_id}/webhooks/{id}
+    - DELETE https://api.tiendanube.com/2025-03/{store_id}/webhooks/{id}
+    - GET    https://api.tiendanube.com/2025-03/{store_id}/scripts
+    - GET    https://api.tiendanube.com/2025-03/{store_id}/scripts/{id}
+    - POST   https://api.tiendanube.com/2025-03/{store_id}/scripts
+    - PUT    https://api.tiendanube.com/2025-03/{store_id}/scripts/{id}
+    - DELETE https://api.tiendanube.com/2025-03/{store_id}/scripts/{id}
+    - GET    https://api.tiendanube.com/2025-03/{store_id}/store
+  modeledOrUnverified:
+    - note: >-
+        Endpoint paths, HTTP methods, the OAuth 2 flow, the non-standard
+        Authentication header, the User-Agent requirement, and the leaky-bucket
+        rate limits are all grounded in the live documentation
+        (tiendanube.github.io/api-documentation). The request/response BODY
+        schemas in openapi/nuvemshop-openapi.yml are simplified representative
+        models (additionalProperties:true), not the provider's full field-level
+        schema.
+    - note: >-
+        The platform documents many more resources not modeled here (Cart,
+        Draft Order, Fulfillment Order, Transaction, Abandoned Checkout,
+        Checkout, Discount, Location, Shipping Carrier, Payment Provider,
+        Payment Option, Metafields, Blog, Pages, Email Templates, Business
+        Rules, Kit, Billing, and custom fields). This entry captures a solid
+        representative subset (10 resources).
+    - note: >-
+        Merchant subscription prices and app-developer revenue-share
+        percentages are not reconciled (plans/finops marked reconciled:false);
+        per-sale fee percentages are grounded to the Brazil plan lineup and vary
+        by country.
+sources:
+  - url: https://tiendanube.github.io/api-documentation/
+    type: Documentation
+    note: API home; lists resources and getting-started material.
+  - url: https://tiendanube.github.io/api-documentation/intro
+    type: Documentation
+    note: Base URL (2025-03/{store_id}), User-Agent requirement, leaky-bucket rate limits and headers.
+  - url: https://tiendanube.github.io/api-documentation/authentication
+    type: Documentation
+    note: OAuth 2 authorization code flow; token endpoint; non-standard Authentication header (lowercase bearer).
+  - url: https://tiendanube.github.io/api-documentation/resources/product
+    type: APIReference
+    note: Product endpoints including sku lookup and stock-price bulk update.
+  - url: https://tiendanube.github.io/api-documentation/resources/order
+    type: APIReference
+    note: Order endpoints and lifecycle actions (close/open/cancel), history and subscriptions.
+  - url: https://tiendanube.github.io/api-documentation/resources/webhook
+    type: APIReference
+    note: Webhook CRUD and the full list of subscribable events. No WebSocket.
+  - url: https://github.com/TiendaNube
+    type: SourceCode
+    note: TiendaNube GitHub org - API docs source, SDKs, and app templates.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket protocol surface exists. The public API is request/response
+    REST with webhook (HTTP callback) event delivery. No AsyncAPI document was
+    created because there is no server-push socket transport (WebSocket or SSE)
+    on Nuvemshop's own API to model.

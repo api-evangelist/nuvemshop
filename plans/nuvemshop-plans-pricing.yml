@@ -1,0 +1,199 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Nuvemshop / Tiendanube
+providerId: nuvemshop
+created: '2026-07-12'
+modified: '2026-07-12'
+reconciled: false
+tags:
+- E-commerce
+- Latin America
+- Brazil
+- SaaS
+- Plans
+description: >-
+  Nuvemshop / Tiendanube is a SaaS e-commerce platform sold to merchants as
+  monthly subscription plans, with pricing, plan names, and currency that vary
+  by country (Brazil in BRL, Argentina in ARS, Mexico in MXN, etc.). The API
+  itself is not a separately metered product - it is included with a merchant's
+  store subscription and consumed by apps the merchant installs. App developers
+  do not pay per API call; they monetize apps through the Partner ecosystem /
+  App Store, where Nuvemshop takes a revenue share (billed via the platform's
+  billing system). The merchant plan tiers below reflect the Brazilian
+  (Nuvemshop) lineup; exact monthly prices are not reconciled here because they
+  change and differ by market.
+notes: >-
+  Per-sale fee percentages below are grounded to published Brazil plan
+  information; monthly subscription amounts are intentionally left as
+  "see pricing page" and this artifact is marked reconciled:false. Plan names
+  and fees differ in Argentina, Mexico, Chile, and Colombia. App-developer
+  revenue-share percentages are set by the Partner program and are not
+  reconciled here.
+sources:
+- https://www.nuvemshop.com.br/planos-e-precos
+- https://tiendanube.github.io/api-documentation/intro
+- https://github.com/TiendaNube
+plans:
+- id: nuvemshop-comeco
+  name: Começo (Free)
+  type: free
+  description: >-
+    Free-forever entry plan (R$0/month in Brazil) allowing unlimited product
+    registration, with a higher per-sale fee for non-native payment methods.
+    Includes API/app access.
+  entries:
+  - label: Monthly Subscription
+    name: comeco_subscription
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: BR
+    unit: 1
+    price: R$0 / month
+    userMultiplied: false
+  elements:
+  - name: Unlimited Products
+  - name: API and App Access
+  - name: Native Payment Gateway (Nuvem Pago)
+- id: nuvemshop-essencial
+  name: Essencial
+  type: subscription
+  description: >-
+    Entry paid tier with a lower per-sale fee (2% on non-native payment methods)
+    and additional store features.
+  entries:
+  - label: Monthly Subscription
+    name: essencial_subscription
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: BR
+    unit: 1
+    price: see pricing page (BRL)
+    userMultiplied: false
+  - label: Per-Sale Fee (non-native payment)
+    name: essencial_sale_fee
+    type: usage
+    metric: gmv_percentage
+    limit: -1
+    timeFrame: usage
+    geo: BR
+    unit: 1
+    price: 2% per sale (0% with Nuvem Pago)
+    userMultiplied: false
+  elements:
+  - name: API and App Access
+  - name: Lower Per-Sale Fee
+- id: nuvemshop-impulso
+  name: Impulso
+  type: subscription
+  description: >-
+    Mid tier with a reduced per-sale fee (1% on non-native payment methods) and
+    more advanced features.
+  entries:
+  - label: Monthly Subscription
+    name: impulso_subscription
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: BR
+    unit: 1
+    price: see pricing page (BRL)
+    userMultiplied: false
+  - label: Per-Sale Fee (non-native payment)
+    name: impulso_sale_fee
+    type: usage
+    metric: gmv_percentage
+    limit: -1
+    timeFrame: usage
+    geo: BR
+    unit: 1
+    price: 1% per sale (0% with Nuvem Pago)
+    userMultiplied: false
+  elements:
+  - name: API and App Access
+  - name: Advanced Features
+- id: nuvemshop-escala
+  name: Escala
+  type: subscription
+  description: >-
+    Higher tier with the lowest standard per-sale fee (0.7% on non-native
+    payment methods) for growing stores.
+  entries:
+  - label: Monthly Subscription
+    name: escala_subscription
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: BR
+    unit: 1
+    price: see pricing page (BRL)
+    userMultiplied: false
+  - label: Per-Sale Fee (non-native payment)
+    name: escala_sale_fee
+    type: usage
+    metric: gmv_percentage
+    limit: -1
+    timeFrame: usage
+    geo: BR
+    unit: 1
+    price: 0.7% per sale (0% with Nuvem Pago)
+    userMultiplied: false
+  elements:
+  - name: API and App Access
+  - name: Higher-Tier API Rate Limits
+- id: nuvemshop-next
+  name: Nuvemshop Next (Enterprise)
+  type: enterprise
+  description: >-
+    Enterprise solution for brands with high monthly revenue (in Brazil,
+    targeted at stores above ~R$100k/month) or complex operations, with
+    negotiated terms, dedicated support, and the higher (x10) API rate-limit
+    tier. Contact sales.
+  entries:
+  - label: Enterprise Agreement
+    name: next_enterprise
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Custom Pricing
+  - name: Dedicated Support
+  - name: Higher API Rate Limits
+- id: nuvemshop-partner-apps
+  name: Partner / App Store (Developers)
+  type: usage
+  description: >-
+    App developers build on the API for free and publish apps to the Nuvemshop /
+    Tiendanube App Store. Nuvemshop takes a revenue share on paid app
+    subscriptions and charges, billed through the platform's billing system.
+    Exact revenue-share percentages are set by the Partner program and are not
+    reconciled here.
+  entries:
+  - label: App Revenue Share
+    name: app_revenue_share
+    type: usage
+    metric: revenue_share
+    limit: -1
+    timeFrame: usage
+    geo: global
+    unit: 1
+    price: revenue share (see Partner program terms; not reconciled)
+    userMultiplied: false
+  elements:
+  - name: Free API Access for Developers
+  - name: App Store Distribution
+  - name: Platform Billing
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

@@ -1,0 +1,43 @@
+generated: '2026-07-12'
+method: derived
+source: openapi/nuvemshop-openapi.yml
+summary:
+  types:
+  - apiKey
+  - oauth2
+schemes:
+- name: authenticationHeader
+  type: apiKey
+  in: header
+  headerName: Authentication
+  description: >-
+    NON-STANDARD auth header. Nuvemshop / Tiendanube apps authenticate with
+    OAuth 2 (authorization code grant) and receive a NON-EXPIRING access token.
+    That token is sent on every request in a header named `Authentication`
+    (not `Authorization`) with a lowercase `bearer` prefix:
+    `Authentication: bearer ACCESS_TOKEN`. Using `Authorization`, an uppercase
+    `Bearer`, or any other casing returns 401. A descriptive `User-Agent`
+    header identifying the app and a contact (e.g. `MyApp (name@email.com)`) is
+    also REQUIRED on every request; omitting it returns 400.
+  sources:
+  - openapi/nuvemshop-openapi.yml
+  - https://tiendanube.github.io/api-documentation/intro
+  - https://tiendanube.github.io/api-documentation/authentication
+oauth2:
+  grantTypes:
+  - authorization_code
+  authorizationUrl: https://www.tiendanube.com/apps/{app_id}/authorize
+  tokenUrl: https://www.tiendanube.com/apps/authorize/token
+  tokenExpiry: non-expiring
+  notes: >-
+    The authorization URL takes a `state` (CSRF) parameter. The token exchange
+    is a POST to https://www.tiendanube.com/apps/authorize/token with a JSON
+    body of client_id, client_secret, grant_type=authorization_code, and the
+    authorization code. The response returns access_token, token_type "bearer",
+    the granted scope, and user_id (the numeric store id used in every API
+    path). The nuvemshop.com.br domain mirrors the same endpoints for Brazil.
+  scopesNote: >-
+    Scopes are granted per app and appear in the token response `scope` field
+    (for example read_products, write_products, read_orders, write_orders,
+    read_customers, write_customers, read_coupons, write_coupons,
+    read_scripts, write_scripts).

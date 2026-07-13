@@ -1,0 +1,252 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Nuvemshop / Tiendanube Admin API",
+    "version": "2025-03",
+    "description": "Store-scoped REST Admin API for the Nuvemshop (Tiendanube) e-commerce platform. Base: https://api.tiendanube.com/2025-03/{store_id} (api.nuvemshop.com.br for Brazil). NON-STANDARD auth: send the OAuth 2 access token as the header 'Authentication: bearer ACCESS_TOKEN' (header name Authentication, lowercase bearer). A descriptive User-Agent header is required on every request. Grounded representative subset."
+  },
+  "request": {
+    "headers": [
+      { "name": "Authentication", "value": "bearer {{accessToken}}" },
+      { "name": "User-Agent", "value": "{{userAgent}}" }
+    ]
+  },
+  "items": [
+    {
+      "info": { "name": "Products", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List products", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.tiendanube.com/2025-03/:store_id/products?page=1&per_page=30", "params": [ { "name": "store_id", "value": "", "type": "path", "description": "The numeric store id." }, { "name": "page", "value": "1", "type": "query" }, { "name": "per_page", "value": "30", "type": "query" } ] },
+          "docs": "Receive a paginated list of all products."
+        },
+        {
+          "info": { "name": "Get a product", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.tiendanube.com/2025-03/:store_id/products/:id", "params": [ { "name": "store_id", "value": "", "type": "path" }, { "name": "id", "value": "", "type": "path" } ] },
+          "docs": "Receive a single product by its id."
+        },
+        {
+          "info": { "name": "Get a product by SKU", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.tiendanube.com/2025-03/:store_id/products/sku/:sku", "params": [ { "name": "store_id", "value": "", "type": "path" }, { "name": "sku", "value": "", "type": "path" } ] },
+          "docs": "Receive the product that owns the variant with the given SKU."
+        },
+        {
+          "info": { "name": "Create a product", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.tiendanube.com/2025-03/:store_id/products", "params": [ { "name": "store_id", "value": "", "type": "path" } ], "body": { "type": "json", "data": "{\n  \"name\": { \"es\": \"Producto nuevo\", \"pt\": \"Novo produto\" },\n  \"variants\": [ { \"price\": \"100.00\", \"stock\": 10 } ]\n}" } },
+          "docs": "Create a new product."
+        },
+        {
+          "info": { "name": "Update a product", "type": "http" },
+          "http": { "method": "PUT", "url": "https://api.tiendanube.com/2025-03/:store_id/products/:id", "params": [ { "name": "store_id", "value": "", "type": "path" }, { "name": "id", "value": "", "type": "path" } ], "body": { "type": "json", "data": "{ \"published\": true }" } },
+          "docs": "Modify an existing product."
+        },
+        {
+          "info": { "name": "Delete a product", "type": "http" },
+          "http": { "method": "DELETE", "url": "https://api.tiendanube.com/2025-03/:store_id/products/:id", "params": [ { "name": "store_id", "value": "", "type": "path" }, { "name": "id", "value": "", "type": "path" } ] },
+          "docs": "Remove a product."
+        },
+        {
+          "info": { "name": "Bulk update stock and price", "type": "http" },
+          "http": { "method": "PATCH", "url": "https://api.tiendanube.com/2025-03/:store_id/products/stock-price", "params": [ { "name": "store_id", "value": "", "type": "path" } ], "body": { "type": "json", "data": "[ { \"id\": 1, \"variants\": [ { \"id\": 10, \"price\": \"99.90\", \"stock\": 5 } ] } ]" } },
+          "docs": "Update stock and/or price for multiple products and variants."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Product Variants", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List variants", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.tiendanube.com/2025-03/:store_id/products/:product_id/variants", "params": [ { "name": "store_id", "value": "", "type": "path" }, { "name": "product_id", "value": "", "type": "path" } ] },
+          "docs": "Receive a list of all variants for a given product."
+        },
+        {
+          "info": { "name": "Create a variant", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.tiendanube.com/2025-03/:store_id/products/:product_id/variants", "params": [ { "name": "store_id", "value": "", "type": "path" }, { "name": "product_id", "value": "", "type": "path" } ], "body": { "type": "json", "data": "{ \"price\": \"120.00\", \"stock\": 8, \"values\": [ { \"es\": \"Rojo\", \"pt\": \"Vermelho\" } ] }" } },
+          "docs": "Create a new variant for a product."
+        },
+        {
+          "info": { "name": "Update a variant", "type": "http" },
+          "http": { "method": "PUT", "url": "https://api.tiendanube.com/2025-03/:store_id/products/:product_id/variants/:id", "params": [ { "name": "store_id", "value": "", "type": "path" }, { "name": "product_id", "value": "", "type": "path" }, { "name": "id", "value": "", "type": "path" } ], "body": { "type": "json", "data": "{ \"price\": \"110.00\" }" } },
+          "docs": "Modify an existing variant."
+        },
+        {
+          "info": { "name": "Delete a variant", "type": "http" },
+          "http": { "method": "DELETE", "url": "https://api.tiendanube.com/2025-03/:store_id/products/:product_id/variants/:id", "params": [ { "name": "store_id", "value": "", "type": "path" }, { "name": "product_id", "value": "", "type": "path" }, { "name": "id", "value": "", "type": "path" } ] },
+          "docs": "Remove a variant from a product."
+        },
+        {
+          "info": { "name": "Update variant stock", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.tiendanube.com/2025-03/:store_id/products/:product_id/variants/stock", "params": [ { "name": "store_id", "value": "", "type": "path" }, { "name": "product_id", "value": "", "type": "path" } ], "body": { "type": "json", "data": "{ \"action\": \"variation\", \"value\": 5 }" } },
+          "docs": "Update the stock for one or all variants of a product."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Product Images", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List images", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.tiendanube.com/2025-03/:store_id/products/:product_id/images", "params": [ { "name": "store_id", "value": "", "type": "path" }, { "name": "product_id", "value": "", "type": "path" } ] },
+          "docs": "Receive a list of all images for a given product."
+        },
+        {
+          "info": { "name": "Create an image", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.tiendanube.com/2025-03/:store_id/products/:product_id/images", "params": [ { "name": "store_id", "value": "", "type": "path" }, { "name": "product_id", "value": "", "type": "path" } ], "body": { "type": "json", "data": "{ \"src\": \"https://example.com/image.jpg\" }" } },
+          "docs": "Attach a new image to a product by URL or base64 attachment."
+        },
+        {
+          "info": { "name": "Delete an image", "type": "http" },
+          "http": { "method": "DELETE", "url": "https://api.tiendanube.com/2025-03/:store_id/products/:product_id/images/:id", "params": [ { "name": "store_id", "value": "", "type": "path" }, { "name": "product_id", "value": "", "type": "path" }, { "name": "id", "value": "", "type": "path" } ] },
+          "docs": "Remove an image from a product."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Categories", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List categories", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.tiendanube.com/2025-03/:store_id/categories", "params": [ { "name": "store_id", "value": "", "type": "path" } ] },
+          "docs": "Receive a list of all categories."
+        },
+        {
+          "info": { "name": "Create a category", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.tiendanube.com/2025-03/:store_id/categories", "params": [ { "name": "store_id", "value": "", "type": "path" } ], "body": { "type": "json", "data": "{ \"name\": { \"es\": \"Zapatos\", \"pt\": \"Sapatos\" } }" } },
+          "docs": "Create a new category."
+        },
+        {
+          "info": { "name": "Delete a category", "type": "http" },
+          "http": { "method": "DELETE", "url": "https://api.tiendanube.com/2025-03/:store_id/categories/:id", "params": [ { "name": "store_id", "value": "", "type": "path" }, { "name": "id", "value": "", "type": "path" } ] },
+          "docs": "Remove a category."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Orders", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List orders", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.tiendanube.com/2025-03/:store_id/orders?page=1&per_page=30", "params": [ { "name": "store_id", "value": "", "type": "path" }, { "name": "page", "value": "1", "type": "query" }, { "name": "per_page", "value": "30", "type": "query" } ] },
+          "docs": "Receive a paginated list of all orders."
+        },
+        {
+          "info": { "name": "Get an order", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.tiendanube.com/2025-03/:store_id/orders/:id", "params": [ { "name": "store_id", "value": "", "type": "path" }, { "name": "id", "value": "", "type": "path" } ] },
+          "docs": "Receive a single order by its id."
+        },
+        {
+          "info": { "name": "Create an order", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.tiendanube.com/2025-03/:store_id/orders", "params": [ { "name": "store_id", "value": "", "type": "path" } ], "body": { "type": "json", "data": "{ \"products\": [ { \"variant_id\": 10, \"quantity\": 1 } ] }" } },
+          "docs": "Create a new order."
+        },
+        {
+          "info": { "name": "Update an order", "type": "http" },
+          "http": { "method": "PUT", "url": "https://api.tiendanube.com/2025-03/:store_id/orders/:id", "params": [ { "name": "store_id", "value": "", "type": "path" }, { "name": "id", "value": "", "type": "path" } ], "body": { "type": "json", "data": "{ \"owner_note\": \"Priority shipping\" }" } },
+          "docs": "Change order attributes and/or update status."
+        },
+        {
+          "info": { "name": "Close an order", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.tiendanube.com/2025-03/:store_id/orders/:id/close", "params": [ { "name": "store_id", "value": "", "type": "path" }, { "name": "id", "value": "", "type": "path" } ] },
+          "docs": "Close an order."
+        },
+        {
+          "info": { "name": "Re-open an order", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.tiendanube.com/2025-03/:store_id/orders/:id/open", "params": [ { "name": "store_id", "value": "", "type": "path" }, { "name": "id", "value": "", "type": "path" } ] },
+          "docs": "Re-open a previously closed order."
+        },
+        {
+          "info": { "name": "Cancel an order", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.tiendanube.com/2025-03/:store_id/orders/:id/cancel", "params": [ { "name": "store_id", "value": "", "type": "path" }, { "name": "id", "value": "", "type": "path" } ] },
+          "docs": "Cancel an order."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Customers", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List customers", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.tiendanube.com/2025-03/:store_id/customers", "params": [ { "name": "store_id", "value": "", "type": "path" } ] },
+          "docs": "Receive a list of all customers."
+        },
+        {
+          "info": { "name": "Create a customer", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.tiendanube.com/2025-03/:store_id/customers", "params": [ { "name": "store_id", "value": "", "type": "path" } ], "body": { "type": "json", "data": "{ \"name\": \"Ada Lovelace\", \"email\": \"ada@example.com\" }" } },
+          "docs": "Create a new customer."
+        },
+        {
+          "info": { "name": "Delete a customer", "type": "http" },
+          "http": { "method": "DELETE", "url": "https://api.tiendanube.com/2025-03/:store_id/customers/:id", "params": [ { "name": "store_id", "value": "", "type": "path" }, { "name": "id", "value": "", "type": "path" } ] },
+          "docs": "Delete a customer."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Coupons", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List coupons", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.tiendanube.com/2025-03/:store_id/coupons", "params": [ { "name": "store_id", "value": "", "type": "path" } ] },
+          "docs": "Retrieve the list of all coupons."
+        },
+        {
+          "info": { "name": "Create a coupon", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.tiendanube.com/2025-03/:store_id/coupons", "params": [ { "name": "store_id", "value": "", "type": "path" } ], "body": { "type": "json", "data": "{ \"code\": \"WELCOME10\", \"type\": \"percentage\", \"value\": \"10\" }" } },
+          "docs": "Create a new coupon."
+        },
+        {
+          "info": { "name": "Delete a coupon", "type": "http" },
+          "http": { "method": "DELETE", "url": "https://api.tiendanube.com/2025-03/:store_id/coupons/:id", "params": [ { "name": "store_id", "value": "", "type": "path" }, { "name": "id", "value": "", "type": "path" } ] },
+          "docs": "Delete an existing coupon."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Webhooks", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List webhooks", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.tiendanube.com/2025-03/:store_id/webhooks", "params": [ { "name": "store_id", "value": "", "type": "path" } ] },
+          "docs": "Receive a list of all webhook subscriptions."
+        },
+        {
+          "info": { "name": "Create a webhook", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.tiendanube.com/2025-03/:store_id/webhooks", "params": [ { "name": "store_id", "value": "", "type": "path" } ], "body": { "type": "json", "data": "{ \"event\": \"order/created\", \"url\": \"https://myapp.com/webhooks/nuvemshop\" }" } },
+          "docs": "Subscribe to an event (e.g. order/created, product/updated, customer/created)."
+        },
+        {
+          "info": { "name": "Delete a webhook", "type": "http" },
+          "http": { "method": "DELETE", "url": "https://api.tiendanube.com/2025-03/:store_id/webhooks/:id", "params": [ { "name": "store_id", "value": "", "type": "path" }, { "name": "id", "value": "", "type": "path" } ] },
+          "docs": "Delete a webhook subscription."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Scripts", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List scripts", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.tiendanube.com/2025-03/:store_id/scripts", "params": [ { "name": "store_id", "value": "", "type": "path" } ] },
+          "docs": "Retrieve a list of script-store associations."
+        },
+        {
+          "info": { "name": "Create a script", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.tiendanube.com/2025-03/:store_id/scripts", "params": [ { "name": "store_id", "value": "", "type": "path" } ], "body": { "type": "json", "data": "{ \"src\": \"https://myapp.com/script.js\", \"event\": \"onload\", \"where\": \"store\" }" } },
+          "docs": "Create a script-store association."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Store", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Get the store", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.tiendanube.com/2025-03/:store_id/store", "params": [ { "name": "store_id", "value": "", "type": "path" } ] },
+          "docs": "Receive the authenticated store's settings and metadata."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

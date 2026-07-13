@@ -1,0 +1,549 @@
+{
+  "info": {
+    "name": "Nuvemshop / Tiendanube Admin API",
+    "description": "Store-scoped REST Admin API for the Nuvemshop (Tiendanube) e-commerce platform. Base URL: https://api.tiendanube.com/2025-03/{store_id} (or api.nuvemshop.com.br for Brazil). Auth is a NON-STANDARD header: send the OAuth 2 access token as 'Authentication: bearer ACCESS_TOKEN' (header name is Authentication, not Authorization; 'bearer' lowercase). A descriptive User-Agent header is also required on every request. Grounded representative subset covering products, variants, images, categories, orders, customers, coupons, webhooks, scripts, and store.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "https://api.tiendanube.com/2025-03", "type": "string" },
+    { "key": "store_id", "value": "", "type": "string" },
+    { "key": "accessToken", "value": "", "type": "string" },
+    { "key": "userAgent", "value": "MyApp (name@email.com)", "type": "string" }
+  ],
+  "item": [
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "List products",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authentication", "value": "bearer {{accessToken}}" },
+              { "key": "User-Agent", "value": "{{userAgent}}" }
+            ],
+            "url": { "raw": "{{baseUrl}}/{{store_id}}/products?page=1&per_page=30", "host": ["{{baseUrl}}"], "path": ["{{store_id}}", "products"], "query": [ { "key": "page", "value": "1" }, { "key": "per_page", "value": "30" } ] },
+            "description": "Receive a paginated list of all products."
+          }
+        },
+        {
+          "name": "Get a product",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authentication", "value": "bearer {{accessToken}}" },
+              { "key": "User-Agent", "value": "{{userAgent}}" }
+            ],
+            "url": { "raw": "{{baseUrl}}/{{store_id}}/products/:id", "host": ["{{baseUrl}}"], "path": ["{{store_id}}", "products", ":id"], "variable": [ { "key": "id", "value": "" } ] },
+            "description": "Receive a single product by its id."
+          }
+        },
+        {
+          "name": "Get a product by SKU",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authentication", "value": "bearer {{accessToken}}" },
+              { "key": "User-Agent", "value": "{{userAgent}}" }
+            ],
+            "url": { "raw": "{{baseUrl}}/{{store_id}}/products/sku/:sku", "host": ["{{baseUrl}}"], "path": ["{{store_id}}", "products", "sku", ":sku"], "variable": [ { "key": "sku", "value": "" } ] },
+            "description": "Receive the product that owns the variant with the given SKU."
+          }
+        },
+        {
+          "name": "Create a product",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authentication", "value": "bearer {{accessToken}}" },
+              { "key": "User-Agent", "value": "{{userAgent}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": { \"es\": \"Producto nuevo\", \"pt\": \"Novo produto\" },\n  \"variants\": [ { \"price\": \"100.00\", \"stock\": 10 } ]\n}" },
+            "url": { "raw": "{{baseUrl}}/{{store_id}}/products", "host": ["{{baseUrl}}"], "path": ["{{store_id}}", "products"] },
+            "description": "Create a new product."
+          }
+        },
+        {
+          "name": "Update a product",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Authentication", "value": "bearer {{accessToken}}" },
+              { "key": "User-Agent", "value": "{{userAgent}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"published\": true\n}" },
+            "url": { "raw": "{{baseUrl}}/{{store_id}}/products/:id", "host": ["{{baseUrl}}"], "path": ["{{store_id}}", "products", ":id"], "variable": [ { "key": "id", "value": "" } ] },
+            "description": "Modify an existing product."
+          }
+        },
+        {
+          "name": "Delete a product",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              { "key": "Authentication", "value": "bearer {{accessToken}}" },
+              { "key": "User-Agent", "value": "{{userAgent}}" }
+            ],
+            "url": { "raw": "{{baseUrl}}/{{store_id}}/products/:id", "host": ["{{baseUrl}}"], "path": ["{{store_id}}", "products", ":id"], "variable": [ { "key": "id", "value": "" } ] },
+            "description": "Remove a product."
+          }
+        },
+        {
+          "name": "Bulk update stock and price",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Authentication", "value": "bearer {{accessToken}}" },
+              { "key": "User-Agent", "value": "{{userAgent}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "[\n  { \"id\": 1, \"variants\": [ { \"id\": 10, \"price\": \"99.90\", \"stock\": 5 } ] }\n]" },
+            "url": { "raw": "{{baseUrl}}/{{store_id}}/products/stock-price", "host": ["{{baseUrl}}"], "path": ["{{store_id}}", "products", "stock-price"] },
+            "description": "Update stock and/or price for multiple products and variants."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Product Variants",
+      "item": [
+        {
+          "name": "List variants",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authentication", "value": "bearer {{accessToken}}" },
+              { "key": "User-Agent", "value": "{{userAgent}}" }
+            ],
+            "url": { "raw": "{{baseUrl}}/{{store_id}}/products/:product_id/variants", "host": ["{{baseUrl}}"], "path": ["{{store_id}}", "products", ":product_id", "variants"], "variable": [ { "key": "product_id", "value": "" } ] },
+            "description": "Receive a list of all variants for a given product."
+          }
+        },
+        {
+          "name": "Get a variant",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authentication", "value": "bearer {{accessToken}}" },
+              { "key": "User-Agent", "value": "{{userAgent}}" }
+            ],
+            "url": { "raw": "{{baseUrl}}/{{store_id}}/products/:product_id/variants/:id", "host": ["{{baseUrl}}"], "path": ["{{store_id}}", "products", ":product_id", "variants", ":id"], "variable": [ { "key": "product_id", "value": "" }, { "key": "id", "value": "" } ] },
+            "description": "Receive a single variant of a product."
+          }
+        },
+        {
+          "name": "Create a variant",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authentication", "value": "bearer {{accessToken}}" },
+              { "key": "User-Agent", "value": "{{userAgent}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"price\": \"120.00\",\n  \"stock\": 8,\n  \"values\": [ { \"es\": \"Rojo\", \"pt\": \"Vermelho\" } ]\n}" },
+            "url": { "raw": "{{baseUrl}}/{{store_id}}/products/:product_id/variants", "host": ["{{baseUrl}}"], "path": ["{{store_id}}", "products", ":product_id", "variants"], "variable": [ { "key": "product_id", "value": "" } ] },
+            "description": "Create a new variant for a product."
+          }
+        },
+        {
+          "name": "Update a variant",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Authentication", "value": "bearer {{accessToken}}" },
+              { "key": "User-Agent", "value": "{{userAgent}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"price\": \"110.00\"\n}" },
+            "url": { "raw": "{{baseUrl}}/{{store_id}}/products/:product_id/variants/:id", "host": ["{{baseUrl}}"], "path": ["{{store_id}}", "products", ":product_id", "variants", ":id"], "variable": [ { "key": "product_id", "value": "" }, { "key": "id", "value": "" } ] },
+            "description": "Modify an existing variant."
+          }
+        },
+        {
+          "name": "Delete a variant",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              { "key": "Authentication", "value": "bearer {{accessToken}}" },
+              { "key": "User-Agent", "value": "{{userAgent}}" }
+            ],
+            "url": { "raw": "{{baseUrl}}/{{store_id}}/products/:product_id/variants/:id", "host": ["{{baseUrl}}"], "path": ["{{store_id}}", "products", ":product_id", "variants", ":id"], "variable": [ { "key": "product_id", "value": "" }, { "key": "id", "value": "" } ] },
+            "description": "Remove a variant from a product."
+          }
+        },
+        {
+          "name": "Update variant stock",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authentication", "value": "bearer {{accessToken}}" },
+              { "key": "User-Agent", "value": "{{userAgent}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"action\": \"variation\",\n  \"value\": 5\n}" },
+            "url": { "raw": "{{baseUrl}}/{{store_id}}/products/:product_id/variants/stock", "host": ["{{baseUrl}}"], "path": ["{{store_id}}", "products", ":product_id", "variants", "stock"], "variable": [ { "key": "product_id", "value": "" } ] },
+            "description": "Update the stock for one or all variants of a product."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Product Images",
+      "item": [
+        {
+          "name": "List images",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authentication", "value": "bearer {{accessToken}}" },
+              { "key": "User-Agent", "value": "{{userAgent}}" }
+            ],
+            "url": { "raw": "{{baseUrl}}/{{store_id}}/products/:product_id/images", "host": ["{{baseUrl}}"], "path": ["{{store_id}}", "products", ":product_id", "images"], "variable": [ { "key": "product_id", "value": "" } ] },
+            "description": "Receive a list of all images for a given product."
+          }
+        },
+        {
+          "name": "Create an image",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authentication", "value": "bearer {{accessToken}}" },
+              { "key": "User-Agent", "value": "{{userAgent}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"src\": \"https://example.com/image.jpg\"\n}" },
+            "url": { "raw": "{{baseUrl}}/{{store_id}}/products/:product_id/images", "host": ["{{baseUrl}}"], "path": ["{{store_id}}", "products", ":product_id", "images"], "variable": [ { "key": "product_id", "value": "" } ] },
+            "description": "Attach a new image to a product by URL or base64 attachment."
+          }
+        },
+        {
+          "name": "Delete an image",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              { "key": "Authentication", "value": "bearer {{accessToken}}" },
+              { "key": "User-Agent", "value": "{{userAgent}}" }
+            ],
+            "url": { "raw": "{{baseUrl}}/{{store_id}}/products/:product_id/images/:id", "host": ["{{baseUrl}}"], "path": ["{{store_id}}", "products", ":product_id", "images", ":id"], "variable": [ { "key": "product_id", "value": "" }, { "key": "id", "value": "" } ] },
+            "description": "Remove an image from a product."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Categories",
+      "item": [
+        {
+          "name": "List categories",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authentication", "value": "bearer {{accessToken}}" },
+              { "key": "User-Agent", "value": "{{userAgent}}" }
+            ],
+            "url": { "raw": "{{baseUrl}}/{{store_id}}/categories", "host": ["{{baseUrl}}"], "path": ["{{store_id}}", "categories"] },
+            "description": "Receive a list of all categories."
+          }
+        },
+        {
+          "name": "Create a category",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authentication", "value": "bearer {{accessToken}}" },
+              { "key": "User-Agent", "value": "{{userAgent}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": { \"es\": \"Zapatos\", \"pt\": \"Sapatos\" }\n}" },
+            "url": { "raw": "{{baseUrl}}/{{store_id}}/categories", "host": ["{{baseUrl}}"], "path": ["{{store_id}}", "categories"] },
+            "description": "Create a new category."
+          }
+        },
+        {
+          "name": "Delete a category",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              { "key": "Authentication", "value": "bearer {{accessToken}}" },
+              { "key": "User-Agent", "value": "{{userAgent}}" }
+            ],
+            "url": { "raw": "{{baseUrl}}/{{store_id}}/categories/:id", "host": ["{{baseUrl}}"], "path": ["{{store_id}}", "categories", ":id"], "variable": [ { "key": "id", "value": "" } ] },
+            "description": "Remove a category."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Orders",
+      "item": [
+        {
+          "name": "List orders",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authentication", "value": "bearer {{accessToken}}" },
+              { "key": "User-Agent", "value": "{{userAgent}}" }
+            ],
+            "url": { "raw": "{{baseUrl}}/{{store_id}}/orders?page=1&per_page=30", "host": ["{{baseUrl}}"], "path": ["{{store_id}}", "orders"], "query": [ { "key": "page", "value": "1" }, { "key": "per_page", "value": "30" } ] },
+            "description": "Receive a paginated list of all orders."
+          }
+        },
+        {
+          "name": "Get an order",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authentication", "value": "bearer {{accessToken}}" },
+              { "key": "User-Agent", "value": "{{userAgent}}" }
+            ],
+            "url": { "raw": "{{baseUrl}}/{{store_id}}/orders/:id", "host": ["{{baseUrl}}"], "path": ["{{store_id}}", "orders", ":id"], "variable": [ { "key": "id", "value": "" } ] },
+            "description": "Receive a single order by its id."
+          }
+        },
+        {
+          "name": "Create an order",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authentication", "value": "bearer {{accessToken}}" },
+              { "key": "User-Agent", "value": "{{userAgent}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"products\": [ { \"variant_id\": 10, \"quantity\": 1 } ]\n}" },
+            "url": { "raw": "{{baseUrl}}/{{store_id}}/orders", "host": ["{{baseUrl}}"], "path": ["{{store_id}}", "orders"] },
+            "description": "Create a new order."
+          }
+        },
+        {
+          "name": "Update an order",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Authentication", "value": "bearer {{accessToken}}" },
+              { "key": "User-Agent", "value": "{{userAgent}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"owner_note\": \"Priority shipping\"\n}" },
+            "url": { "raw": "{{baseUrl}}/{{store_id}}/orders/:id", "host": ["{{baseUrl}}"], "path": ["{{store_id}}", "orders", ":id"], "variable": [ { "key": "id", "value": "" } ] },
+            "description": "Change order attributes and/or update status."
+          }
+        },
+        {
+          "name": "Close an order",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authentication", "value": "bearer {{accessToken}}" },
+              { "key": "User-Agent", "value": "{{userAgent}}" }
+            ],
+            "url": { "raw": "{{baseUrl}}/{{store_id}}/orders/:id/close", "host": ["{{baseUrl}}"], "path": ["{{store_id}}", "orders", ":id", "close"], "variable": [ { "key": "id", "value": "" } ] },
+            "description": "Close an order."
+          }
+        },
+        {
+          "name": "Re-open an order",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authentication", "value": "bearer {{accessToken}}" },
+              { "key": "User-Agent", "value": "{{userAgent}}" }
+            ],
+            "url": { "raw": "{{baseUrl}}/{{store_id}}/orders/:id/open", "host": ["{{baseUrl}}"], "path": ["{{store_id}}", "orders", ":id", "open"], "variable": [ { "key": "id", "value": "" } ] },
+            "description": "Re-open a previously closed order."
+          }
+        },
+        {
+          "name": "Cancel an order",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authentication", "value": "bearer {{accessToken}}" },
+              { "key": "User-Agent", "value": "{{userAgent}}" }
+            ],
+            "url": { "raw": "{{baseUrl}}/{{store_id}}/orders/:id/cancel", "host": ["{{baseUrl}}"], "path": ["{{store_id}}", "orders", ":id", "cancel"], "variable": [ { "key": "id", "value": "" } ] },
+            "description": "Cancel an order."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Customers",
+      "item": [
+        {
+          "name": "List customers",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authentication", "value": "bearer {{accessToken}}" },
+              { "key": "User-Agent", "value": "{{userAgent}}" }
+            ],
+            "url": { "raw": "{{baseUrl}}/{{store_id}}/customers", "host": ["{{baseUrl}}"], "path": ["{{store_id}}", "customers"] },
+            "description": "Receive a list of all customers."
+          }
+        },
+        {
+          "name": "Create a customer",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authentication", "value": "bearer {{accessToken}}" },
+              { "key": "User-Agent", "value": "{{userAgent}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Ada Lovelace\",\n  \"email\": \"ada@example.com\"\n}" },
+            "url": { "raw": "{{baseUrl}}/{{store_id}}/customers", "host": ["{{baseUrl}}"], "path": ["{{store_id}}", "customers"] },
+            "description": "Create a new customer."
+          }
+        },
+        {
+          "name": "Delete a customer",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              { "key": "Authentication", "value": "bearer {{accessToken}}" },
+              { "key": "User-Agent", "value": "{{userAgent}}" }
+            ],
+            "url": { "raw": "{{baseUrl}}/{{store_id}}/customers/:id", "host": ["{{baseUrl}}"], "path": ["{{store_id}}", "customers", ":id"], "variable": [ { "key": "id", "value": "" } ] },
+            "description": "Delete a customer."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Coupons",
+      "item": [
+        {
+          "name": "List coupons",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authentication", "value": "bearer {{accessToken}}" },
+              { "key": "User-Agent", "value": "{{userAgent}}" }
+            ],
+            "url": { "raw": "{{baseUrl}}/{{store_id}}/coupons", "host": ["{{baseUrl}}"], "path": ["{{store_id}}", "coupons"] },
+            "description": "Retrieve the list of all coupons."
+          }
+        },
+        {
+          "name": "Create a coupon",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authentication", "value": "bearer {{accessToken}}" },
+              { "key": "User-Agent", "value": "{{userAgent}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"code\": \"WELCOME10\",\n  \"type\": \"percentage\",\n  \"value\": \"10\"\n}" },
+            "url": { "raw": "{{baseUrl}}/{{store_id}}/coupons", "host": ["{{baseUrl}}"], "path": ["{{store_id}}", "coupons"] },
+            "description": "Create a new coupon."
+          }
+        },
+        {
+          "name": "Delete a coupon",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              { "key": "Authentication", "value": "bearer {{accessToken}}" },
+              { "key": "User-Agent", "value": "{{userAgent}}" }
+            ],
+            "url": { "raw": "{{baseUrl}}/{{store_id}}/coupons/:id", "host": ["{{baseUrl}}"], "path": ["{{store_id}}", "coupons", ":id"], "variable": [ { "key": "id", "value": "" } ] },
+            "description": "Delete an existing coupon."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Webhooks",
+      "item": [
+        {
+          "name": "List webhooks",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authentication", "value": "bearer {{accessToken}}" },
+              { "key": "User-Agent", "value": "{{userAgent}}" }
+            ],
+            "url": { "raw": "{{baseUrl}}/{{store_id}}/webhooks", "host": ["{{baseUrl}}"], "path": ["{{store_id}}", "webhooks"] },
+            "description": "Receive a list of all webhook subscriptions."
+          }
+        },
+        {
+          "name": "Create a webhook",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authentication", "value": "bearer {{accessToken}}" },
+              { "key": "User-Agent", "value": "{{userAgent}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"event\": \"order/created\",\n  \"url\": \"https://myapp.com/webhooks/nuvemshop\"\n}" },
+            "url": { "raw": "{{baseUrl}}/{{store_id}}/webhooks", "host": ["{{baseUrl}}"], "path": ["{{store_id}}", "webhooks"] },
+            "description": "Subscribe to an event (e.g. order/created, product/updated, customer/created)."
+          }
+        },
+        {
+          "name": "Delete a webhook",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              { "key": "Authentication", "value": "bearer {{accessToken}}" },
+              { "key": "User-Agent", "value": "{{userAgent}}" }
+            ],
+            "url": { "raw": "{{baseUrl}}/{{store_id}}/webhooks/:id", "host": ["{{baseUrl}}"], "path": ["{{store_id}}", "webhooks", ":id"], "variable": [ { "key": "id", "value": "" } ] },
+            "description": "Delete a webhook subscription."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Scripts",
+      "item": [
+        {
+          "name": "List scripts",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authentication", "value": "bearer {{accessToken}}" },
+              { "key": "User-Agent", "value": "{{userAgent}}" }
+            ],
+            "url": { "raw": "{{baseUrl}}/{{store_id}}/scripts", "host": ["{{baseUrl}}"], "path": ["{{store_id}}", "scripts"] },
+            "description": "Retrieve a list of script-store associations."
+          }
+        },
+        {
+          "name": "Create a script",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authentication", "value": "bearer {{accessToken}}" },
+              { "key": "User-Agent", "value": "{{userAgent}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"src\": \"https://myapp.com/script.js\",\n  \"event\": \"onload\",\n  \"where\": \"store\"\n}" },
+            "url": { "raw": "{{baseUrl}}/{{store_id}}/scripts", "host": ["{{baseUrl}}"], "path": ["{{store_id}}", "scripts"] },
+            "description": "Create a script-store association."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Store",
+      "item": [
+        {
+          "name": "Get the store",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authentication", "value": "bearer {{accessToken}}" },
+              { "key": "User-Agent", "value": "{{userAgent}}" }
+            ],
+            "url": { "raw": "{{baseUrl}}/{{store_id}}/store", "host": ["{{baseUrl}}"], "path": ["{{store_id}}", "store"] },
+            "description": "Receive the authenticated store's settings and metadata."
+          }
+        }
+      ]
+    }
+  ]
+}

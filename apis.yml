@@ -1,0 +1,259 @@
+aid: nuvemshop
+url: https://raw.githubusercontent.com/api-evangelist/nuvemshop/refs/heads/main/apis.yml
+name: Nuvemshop / Tiendanube
+kind: company
+description: Nuvemshop (Tiendanube in Spanish-speaking markets) is the leading Latin
+  American e-commerce platform, powering online stores for merchants across Brazil,
+  Argentina, Mexico, Chile, and Colombia. Its public REST Admin API lets apps and
+  integrations manage products, variants, images, categories, orders, customers,
+  coupons, scripts, webhooks, and store settings on a per-store basis. Apps
+  authenticate with OAuth 2 (authorization code grant) and pass a non-expiring
+  access token in a non-standard `Authentication` header (lowercase bearer
+  prefix) along with a required `User-Agent`. The API is store-scoped - every
+  path is prefixed with the
+  store id - and is rate limited with a per-store leaky bucket.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- E-commerce
+- Online Store
+- Latin America
+- Brazil
+- Argentina
+- Storefront
+- Products
+- Orders
+- Merchants
+- Webhooks
+- SaaS
+created: '2026-07-12'
+modified: '2026-07-12'
+specificationVersion: '0.19'
+apis:
+- aid: nuvemshop:nuvemshop-products-api
+  name: Nuvemshop Products API
+  tags:
+  - Products
+  - Catalog
+  - E-commerce
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://tiendanube.github.io/api-documentation/resources/product
+  baseURL: https://api.tiendanube.com/2025-03/{store_id}
+  properties:
+  - url: https://tiendanube.github.io/api-documentation/resources/product
+    type: Documentation
+  - url: https://tiendanube.github.io/api-documentation/resources/product
+    type: APIReference
+  - url: openapi/nuvemshop-openapi.yml
+    type: OpenAPI
+  - url: collections/nuvemshop.postman_collection.json
+    type: PostmanCollection
+  - url: collections/nuvemshop.opencollection.json
+    type: OpenCollection
+  description: Create, list, retrieve, update, and delete products - the items for
+    sale in a store. Includes lookup by variant SKU and a bulk stock/price update
+    endpoint.
+- aid: nuvemshop:nuvemshop-product-variants-api
+  name: Nuvemshop Product Variants API
+  tags:
+  - Variants
+  - Inventory
+  - Stock
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://tiendanube.github.io/api-documentation/resources/product-variant
+  baseURL: https://api.tiendanube.com/2025-03/{store_id}
+  properties:
+  - url: https://tiendanube.github.io/api-documentation/resources/product-variant
+    type: Documentation
+  - url: openapi/nuvemshop-openapi.yml
+    type: OpenAPI
+  - url: collections/nuvemshop.postman_collection.json
+    type: PostmanCollection
+  - url: collections/nuvemshop.opencollection.json
+    type: OpenCollection
+  description: Manage the variants (size, color, and other option combinations)
+    owned by a product, including per-variant pricing and stock, bulk collection
+    replacement, and a dedicated stock-update endpoint.
+- aid: nuvemshop:nuvemshop-product-images-api
+  name: Nuvemshop Product Images API
+  tags:
+  - Images
+  - Media
+  - Catalog
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://tiendanube.github.io/api-documentation/resources/product-image
+  baseURL: https://api.tiendanube.com/2025-03/{store_id}
+  properties:
+  - url: https://tiendanube.github.io/api-documentation/resources/product-image
+    type: Documentation
+  - url: openapi/nuvemshop-openapi.yml
+    type: OpenAPI
+  - url: collections/nuvemshop.postman_collection.json
+    type: PostmanCollection
+  - url: collections/nuvemshop.opencollection.json
+    type: OpenCollection
+  description: Create, list, retrieve, update, and delete the images attached to a
+    product, uploaded by URL or as base64-encoded attachments.
+- aid: nuvemshop:nuvemshop-categories-api
+  name: Nuvemshop Categories API
+  tags:
+  - Categories
+  - Taxonomy
+  - Catalog
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://tiendanube.github.io/api-documentation/resources/category
+  baseURL: https://api.tiendanube.com/2025-03/{store_id}
+  properties:
+  - url: https://tiendanube.github.io/api-documentation/resources/category
+    type: Documentation
+  - url: openapi/nuvemshop-openapi.yml
+    type: OpenAPI
+  - url: collections/nuvemshop.postman_collection.json
+    type: PostmanCollection
+  - url: collections/nuvemshop.opencollection.json
+    type: OpenCollection
+  description: Create, list, retrieve, update, and delete the hierarchical
+    categories used to organize a store's catalog.
+- aid: nuvemshop:nuvemshop-orders-api
+  name: Nuvemshop Orders API
+  tags:
+  - Orders
+  - Sales
+  - Fulfillment
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://tiendanube.github.io/api-documentation/resources/order
+  baseURL: https://api.tiendanube.com/2025-03/{store_id}
+  properties:
+  - url: https://tiendanube.github.io/api-documentation/resources/order
+    type: Documentation
+  - url: openapi/nuvemshop-openapi.yml
+    type: OpenAPI
+  - url: collections/nuvemshop.postman_collection.json
+    type: PostmanCollection
+  - url: collections/nuvemshop.opencollection.json
+    type: OpenCollection
+  description: Create, list, retrieve, and update orders, read value/edition history
+    and subscriptions, and drive lifecycle actions - close, re-open, and cancel an
+    order.
+- aid: nuvemshop:nuvemshop-customers-api
+  name: Nuvemshop Customers API
+  tags:
+  - Customers
+  - CRM
+  - Accounts
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://tiendanube.github.io/api-documentation/resources/customer
+  baseURL: https://api.tiendanube.com/2025-03/{store_id}
+  properties:
+  - url: https://tiendanube.github.io/api-documentation/resources/customer
+    type: Documentation
+  - url: openapi/nuvemshop-openapi.yml
+    type: OpenAPI
+  - url: collections/nuvemshop.postman_collection.json
+    type: PostmanCollection
+  - url: collections/nuvemshop.opencollection.json
+    type: OpenCollection
+  description: Create, list, retrieve, update, and delete the customer accounts
+    registered in a store.
+- aid: nuvemshop:nuvemshop-coupons-api
+  name: Nuvemshop Coupons API
+  tags:
+  - Coupons
+  - Discounts
+  - Promotions
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://tiendanube.github.io/api-documentation/resources/coupon
+  baseURL: https://api.tiendanube.com/2025-03/{store_id}
+  properties:
+  - url: https://tiendanube.github.io/api-documentation/resources/coupon
+    type: Documentation
+  - url: openapi/nuvemshop-openapi.yml
+    type: OpenAPI
+  - url: collections/nuvemshop.postman_collection.json
+    type: PostmanCollection
+  - url: collections/nuvemshop.opencollection.json
+    type: OpenCollection
+  description: Create, list, retrieve, update, and delete discount coupons that a
+    store offers to its shoppers.
+- aid: nuvemshop:nuvemshop-webhooks-api
+  name: Nuvemshop Webhooks API
+  tags:
+  - Webhooks
+  - Events
+  - Notifications
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://tiendanube.github.io/api-documentation/resources/webhook
+  baseURL: https://api.tiendanube.com/2025-03/{store_id}
+  properties:
+  - url: https://tiendanube.github.io/api-documentation/resources/webhook
+    type: Documentation
+  - url: openapi/nuvemshop-openapi.yml
+    type: OpenAPI
+  - url: collections/nuvemshop.postman_collection.json
+    type: PostmanCollection
+  - url: collections/nuvemshop.opencollection.json
+    type: OpenCollection
+  description: Register and manage webhook subscriptions that POST event
+    notifications (order/created, product/updated, customer/created, and many more)
+    to your application. Server-to-endpoint HTTP callbacks, not a streaming socket.
+- aid: nuvemshop:nuvemshop-scripts-api
+  name: Nuvemshop Scripts API
+  tags:
+  - Scripts
+  - Storefront
+  - Customization
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://tiendanube.github.io/api-documentation/resources/script
+  baseURL: https://api.tiendanube.com/2025-03/{store_id}
+  properties:
+  - url: https://tiendanube.github.io/api-documentation/resources/script
+    type: Documentation
+  - url: openapi/nuvemshop-openapi.yml
+    type: OpenAPI
+  - url: collections/nuvemshop.postman_collection.json
+    type: PostmanCollection
+  - url: collections/nuvemshop.opencollection.json
+    type: OpenCollection
+  description: Create, list, retrieve, update, and delete script-store associations
+    that inject custom JavaScript into a merchant's storefront.
+- aid: nuvemshop:nuvemshop-store-api
+  name: Nuvemshop Store API
+  tags:
+  - Store
+  - Settings
+  - Merchant
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://tiendanube.github.io/api-documentation/resources/store
+  baseURL: https://api.tiendanube.com/2025-03/{store_id}
+  properties:
+  - url: https://tiendanube.github.io/api-documentation/resources/store
+    type: Documentation
+  - url: openapi/nuvemshop-openapi.yml
+    type: OpenAPI
+  - url: collections/nuvemshop.postman_collection.json
+    type: PostmanCollection
+  - url: collections/nuvemshop.opencollection.json
+    type: OpenCollection
+  description: Retrieve the authenticated store's general settings and metadata -
+    name, domain, country, currency, language, and contact details.
+common:
+- type: DomainSecurity
+  url: security/nuvemshop-domain-security.yml
+- type: Authentication
+  url: authentication/nuvemshop-authentication.yml
+- type: GitHubOrganization
+  url: https://github.com/TiendaNube
+- type: LinkedIn
+  url: https://www.linkedin.com/company/tiendanube
+- type: Website
+  url: https://www.tiendanube.com
+- type: Documentation
+  url: https://tiendanube.github.io/api-documentation/
+- type: Plans
+  url: plans/nuvemshop-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/nuvemshop-rate-limits.yml
+- type: FinOps
+  url: finops/nuvemshop-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

@@ -236,6 +236,8 @@ apis:
   description: Retrieve the authenticated store's general settings and metadata -
     name, domain, country, currency, language, and contact details.
 common:
+- type: AgenticAccess
+  url: agentic-access/nuvemshop-agentic-access.yml
 - type: DomainSecurity
   url: security/nuvemshop-domain-security.yml
 - type: Authentication

@@ -1,0 +1,310 @@
+openapi: 3.0.3
+info:
+  title: Nuvemshop / Tiendanube Admin Categories Product Variants API
+  description: 'Store-scoped REST Admin API for the Nuvemshop (Tiendanube) e-commerce platform. This document models a grounded, representative subset of the public API - products, product variants, product images, categories, orders, customers, coupons, webhooks, scripts, and store - as documented at https://tiendanube.github.io/api-documentation/.
+
+
+    Every path is relative to a per-store base that embeds the store id, for example `https://api.tiendanube.com/2025-03/{store_id}`. The Brazilian mirror `https://api.nuvemshop.com.br/2025-03/{store_id}` serves the same API, and the long-standing `v1` path (`https://api.tiendanube.com/v1/{store_id}`) remains available as the legacy equivalent.
+
+
+    Authentication is OAuth 2 (authorization code grant). The resulting non-expiring access token is sent in a NON-STANDARD header named `Authentication` with a lowercase `bearer` prefix (`Authentication: bearer ACCESS_TOKEN`) - using `Authorization` or a different case returns 401. Every request must also send a descriptive `User-Agent` header identifying the app and a contact (name/email or URL); omitting it returns 400.
+
+
+    NOTE ON MODELING: endpoint paths, methods, and the auth/header/rate-limit behavior below are grounded in the live documentation. Request and response body schemas are simplified representative models (marked with additionalProperties) rather than the provider''s full field-level schema.'
+  version: 2025-03
+  contact:
+    name: Nuvemshop / Tiendanube Developers
+    url: https://tiendanube.github.io/api-documentation/
+  license:
+    name: MIT (documentation)
+    url: https://github.com/TiendaNube
+servers:
+- url: https://api.tiendanube.com/2025-03/{store_id}
+  description: Tiendanube (Spanish-speaking markets)
+  variables:
+    store_id:
+      default: '0'
+      description: The numeric store id (user_id) returned during OAuth authorization.
+- url: https://api.nuvemshop.com.br/2025-03/{store_id}
+  description: Nuvemshop (Brazil)
+  variables:
+    store_id:
+      default: '0'
+      description: The numeric store id (user_id) returned during OAuth authorization.
+security:
+- authenticationHeader: []
+tags:
+- name: Product Variants
+  description: Option combinations (size, color, etc.) owned by a product.
+paths:
+  /products/{product_id}/variants:
+    parameters:
+    - $ref: '#/components/parameters/ProductId'
+    get:
+      operationId: listProductVariants
+      tags:
+      - Product Variants
+      summary: List product variants
+      description: Receive a list of all variants for a given product.
+      responses:
+        '200':
+          description: A list of variants.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Variant'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createProductVariant
+      tags:
+      - Product Variants
+      summary: Create a product variant
+      description: Create a new variant for a product.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VariantInput'
+      responses:
+        '201':
+          description: The created variant.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Variant'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+    put:
+      operationId: replaceProductVariants
+      tags:
+      - Product Variants
+      summary: Replace the variant collection
+      description: Update the entire variant collection owned by a specific product.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/VariantInput'
+      responses:
+        '200':
+          description: The updated variant collection.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Variant'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    patch:
+      operationId: patchProductVariants
+      tags:
+      - Product Variants
+      summary: Partially update the variant collection
+      description: Partially update a product's variant collection.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+      responses:
+        '200':
+          description: The updated variant collection.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Variant'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /products/{product_id}/variants/{id}:
+    parameters:
+    - $ref: '#/components/parameters/ProductId'
+    - $ref: '#/components/parameters/Id'
+    get:
+      operationId: getProductVariant
+      tags:
+      - Product Variants
+      summary: Get a product variant
+      description: Receive a single variant of a product.
+      responses:
+        '200':
+          description: The requested variant.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Variant'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateProductVariant
+      tags:
+      - Product Variants
+      summary: Update a product variant
+      description: Modify an existing variant.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VariantInput'
+      responses:
+        '200':
+          description: The updated variant.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Variant'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteProductVariant
+      tags:
+      - Product Variants
+      summary: Delete a product variant
+      description: Remove a variant from a product.
+      responses:
+        '200':
+          description: Deletion confirmation (empty object).
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /products/{product_id}/variants/stock:
+    parameters:
+    - $ref: '#/components/parameters/ProductId'
+    post:
+      operationId: updateVariantStock
+      tags:
+      - Product Variants
+      summary: Update variant stock
+      description: Update the stock for one or all variants of a product.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+        '200':
+          description: Stock update result.
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  parameters:
+    Id:
+      name: id
+      in: path
+      required: true
+      description: The numeric resource id.
+      schema:
+        type: integer
+        format: int64
+    ProductId:
+      name: product_id
+      in: path
+      required: true
+      description: The numeric product id.
+      schema:
+        type: integer
+        format: int64
+  schemas:
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        description:
+          type: string
+      additionalProperties: true
+    LocalizedString:
+      type: object
+      description: A map of language code to localized text (e.g. {"es":"...","pt":"..."}).
+      additionalProperties:
+        type: string
+    Variant:
+      allOf:
+      - type: object
+        properties:
+          id:
+            type: integer
+            format: int64
+          product_id:
+            type: integer
+            format: int64
+      - $ref: '#/components/schemas/VariantInput'
+    VariantInput:
+      type: object
+      properties:
+        price:
+          type: string
+        promotional_price:
+          type: string
+        stock:
+          type: integer
+          nullable: true
+        stock_management:
+          type: boolean
+        sku:
+          type: string
+          nullable: true
+        weight:
+          type: string
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/LocalizedString'
+      additionalProperties: true
+  responses:
+    ValidationError:
+      description: The request payload failed validation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Missing or malformed `Authentication` header, or invalid token.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    authenticationHeader:
+      type: apiKey
+      in: header
+      name: Authentication
+      description: 'NON-STANDARD auth header. Send the OAuth 2 access token as `Authentication: bearer ACCESS_TOKEN` - the header name must be `Authentication` (not `Authorization`) and the `bearer` prefix must be lowercase, or the API returns 401. A descriptive `User-Agent` header is also required on every request.'

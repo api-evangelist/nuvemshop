@@ -12,7 +12,20 @@ description: Nuvemshop (Tiendanube in Spanish-speaking markets) is the leading L
   prefix) along with a required `User-Agent`. The API is store-scoped - every
   path is prefixed with the
   store id - and is rate limited with a per-store leaky bucket.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/nuvemshop.png
 tags:
 - E-commerce
 - Online Store
@@ -29,212 +42,366 @@ created: '2026-07-12'
 modified: '2026-07-12'
 specificationVersion: '0.19'
 apis:
-- aid: nuvemshop:nuvemshop-products-api
-  name: Nuvemshop Products API
-  tags:
-  - Products
-  - Catalog
-  - E-commerce
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+- aid: nuvemshop:nuvemshop-categories-api
+  name: Nuvemshop / Tiendanube Categories API
+  description: Hierarchical catalog categories.
   humanURL: https://tiendanube.github.io/api-documentation/resources/product
   baseURL: https://api.tiendanube.com/2025-03/{store_id}
-  properties:
-  - url: https://tiendanube.github.io/api-documentation/resources/product
-    type: Documentation
-  - url: https://tiendanube.github.io/api-documentation/resources/product
-    type: APIReference
-  - url: openapi/nuvemshop-openapi.yml
-    type: OpenAPI
-  - url: collections/nuvemshop.postman_collection.json
-    type: PostmanCollection
-  - url: collections/nuvemshop.opencollection.json
-    type: OpenCollection
-  description: Create, list, retrieve, update, and delete products - the items for
-    sale in a store. Includes lookup by variant SKU and a bulk stock/price update
-    endpoint.
-- aid: nuvemshop:nuvemshop-product-variants-api
-  name: Nuvemshop Product Variants API
-  tags:
-  - Variants
-  - Inventory
-  - Stock
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://tiendanube.github.io/api-documentation/resources/product-variant
-  baseURL: https://api.tiendanube.com/2025-03/{store_id}
-  properties:
-  - url: https://tiendanube.github.io/api-documentation/resources/product-variant
-    type: Documentation
-  - url: openapi/nuvemshop-openapi.yml
-    type: OpenAPI
-  - url: collections/nuvemshop.postman_collection.json
-    type: PostmanCollection
-  - url: collections/nuvemshop.opencollection.json
-    type: OpenCollection
-  description: Manage the variants (size, color, and other option combinations)
-    owned by a product, including per-variant pricing and stock, bulk collection
-    replacement, and a dedicated stock-update endpoint.
-- aid: nuvemshop:nuvemshop-product-images-api
-  name: Nuvemshop Product Images API
-  tags:
-  - Images
-  - Media
-  - Catalog
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://tiendanube.github.io/api-documentation/resources/product-image
-  baseURL: https://api.tiendanube.com/2025-03/{store_id}
-  properties:
-  - url: https://tiendanube.github.io/api-documentation/resources/product-image
-    type: Documentation
-  - url: openapi/nuvemshop-openapi.yml
-    type: OpenAPI
-  - url: collections/nuvemshop.postman_collection.json
-    type: PostmanCollection
-  - url: collections/nuvemshop.opencollection.json
-    type: OpenCollection
-  description: Create, list, retrieve, update, and delete the images attached to a
-    product, uploaded by URL or as base64-encoded attachments.
-- aid: nuvemshop:nuvemshop-categories-api
-  name: Nuvemshop Categories API
   tags:
   - Categories
-  - Taxonomy
-  - Catalog
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://tiendanube.github.io/api-documentation/resources/category
-  baseURL: https://api.tiendanube.com/2025-03/{store_id}
   properties:
-  - url: https://tiendanube.github.io/api-documentation/resources/category
-    type: Documentation
-  - url: openapi/nuvemshop-openapi.yml
-    type: OpenAPI
-  - url: collections/nuvemshop.postman_collection.json
-    type: PostmanCollection
-  - url: collections/nuvemshop.opencollection.json
-    type: OpenCollection
-  description: Create, list, retrieve, update, and delete the hierarchical
-    categories used to organize a store's catalog.
-- aid: nuvemshop:nuvemshop-orders-api
-  name: Nuvemshop Orders API
-  tags:
-  - Orders
-  - Sales
-  - Fulfillment
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://tiendanube.github.io/api-documentation/resources/order
-  baseURL: https://api.tiendanube.com/2025-03/{store_id}
-  properties:
-  - url: https://tiendanube.github.io/api-documentation/resources/order
-    type: Documentation
-  - url: openapi/nuvemshop-openapi.yml
-    type: OpenAPI
-  - url: collections/nuvemshop.postman_collection.json
-    type: PostmanCollection
-  - url: collections/nuvemshop.opencollection.json
-    type: OpenCollection
-  description: Create, list, retrieve, and update orders, read value/edition history
-    and subscriptions, and drive lifecycle actions - close, re-open, and cancel an
-    order.
-- aid: nuvemshop:nuvemshop-customers-api
-  name: Nuvemshop Customers API
-  tags:
-  - Customers
-  - CRM
-  - Accounts
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://tiendanube.github.io/api-documentation/resources/customer
-  baseURL: https://api.tiendanube.com/2025-03/{store_id}
-  properties:
-  - url: https://tiendanube.github.io/api-documentation/resources/customer
-    type: Documentation
-  - url: openapi/nuvemshop-openapi.yml
-    type: OpenAPI
-  - url: collections/nuvemshop.postman_collection.json
-    type: PostmanCollection
-  - url: collections/nuvemshop.opencollection.json
-    type: OpenCollection
-  description: Create, list, retrieve, update, and delete the customer accounts
-    registered in a store.
+  - type: OpenAPI
+    url: openapi/nuvemshop-categories-api-openapi.yml
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/product
+  - type: APIReference
+    url: https://tiendanube.github.io/api-documentation/resources/product
+  - type: PostmanCollection
+    url: collections/nuvemshop.postman_collection.json
+  - type: OpenCollection
+    url: collections/nuvemshop.opencollection.json
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/product-variant
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/product-image
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/category
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/order
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/customer
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/coupon
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/webhook
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/script
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/store
 - aid: nuvemshop:nuvemshop-coupons-api
-  name: Nuvemshop Coupons API
+  name: Nuvemshop / Tiendanube Coupons API
+  description: Discount coupons.
+  humanURL: https://tiendanube.github.io/api-documentation/resources/product
+  baseURL: https://api.tiendanube.com/2025-03/{store_id}
   tags:
   - Coupons
-  - Discounts
-  - Promotions
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://tiendanube.github.io/api-documentation/resources/coupon
-  baseURL: https://api.tiendanube.com/2025-03/{store_id}
   properties:
-  - url: https://tiendanube.github.io/api-documentation/resources/coupon
-    type: Documentation
-  - url: openapi/nuvemshop-openapi.yml
-    type: OpenAPI
-  - url: collections/nuvemshop.postman_collection.json
-    type: PostmanCollection
-  - url: collections/nuvemshop.opencollection.json
-    type: OpenCollection
-  description: Create, list, retrieve, update, and delete discount coupons that a
-    store offers to its shoppers.
-- aid: nuvemshop:nuvemshop-webhooks-api
-  name: Nuvemshop Webhooks API
+  - type: OpenAPI
+    url: openapi/nuvemshop-coupons-api-openapi.yml
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/product
+  - type: APIReference
+    url: https://tiendanube.github.io/api-documentation/resources/product
+  - type: PostmanCollection
+    url: collections/nuvemshop.postman_collection.json
+  - type: OpenCollection
+    url: collections/nuvemshop.opencollection.json
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/product-variant
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/product-image
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/category
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/order
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/customer
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/coupon
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/webhook
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/script
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/store
+- aid: nuvemshop:nuvemshop-customers-api
+  name: Nuvemshop / Tiendanube Customers API
+  description: Registered customer accounts.
+  humanURL: https://tiendanube.github.io/api-documentation/resources/product
+  baseURL: https://api.tiendanube.com/2025-03/{store_id}
   tags:
-  - Webhooks
-  - Events
-  - Notifications
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://tiendanube.github.io/api-documentation/resources/webhook
-  baseURL: https://api.tiendanube.com/2025-03/{store_id}
+  - Customers
   properties:
-  - url: https://tiendanube.github.io/api-documentation/resources/webhook
-    type: Documentation
-  - url: openapi/nuvemshop-openapi.yml
-    type: OpenAPI
-  - url: collections/nuvemshop.postman_collection.json
-    type: PostmanCollection
-  - url: collections/nuvemshop.opencollection.json
-    type: OpenCollection
-  description: Register and manage webhook subscriptions that POST event
-    notifications (order/created, product/updated, customer/created, and many more)
-    to your application. Server-to-endpoint HTTP callbacks, not a streaming socket.
+  - type: OpenAPI
+    url: openapi/nuvemshop-customers-api-openapi.yml
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/product
+  - type: APIReference
+    url: https://tiendanube.github.io/api-documentation/resources/product
+  - type: PostmanCollection
+    url: collections/nuvemshop.postman_collection.json
+  - type: OpenCollection
+    url: collections/nuvemshop.opencollection.json
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/product-variant
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/product-image
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/category
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/order
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/customer
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/coupon
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/webhook
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/script
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/store
+- aid: nuvemshop:nuvemshop-orders-api
+  name: Nuvemshop / Tiendanube Orders API
+  description: Customer purchases and their lifecycle.
+  humanURL: https://tiendanube.github.io/api-documentation/resources/product
+  baseURL: https://api.tiendanube.com/2025-03/{store_id}
+  tags:
+  - Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/nuvemshop-orders-api-openapi.yml
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/product
+  - type: APIReference
+    url: https://tiendanube.github.io/api-documentation/resources/product
+  - type: PostmanCollection
+    url: collections/nuvemshop.postman_collection.json
+  - type: OpenCollection
+    url: collections/nuvemshop.opencollection.json
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/product-variant
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/product-image
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/category
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/order
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/customer
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/coupon
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/webhook
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/script
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/store
+- aid: nuvemshop:nuvemshop-product-images-api
+  name: Nuvemshop / Tiendanube Product Images API
+  description: Images attached to a product.
+  humanURL: https://tiendanube.github.io/api-documentation/resources/product
+  baseURL: https://api.tiendanube.com/2025-03/{store_id}
+  tags:
+  - Product Images
+  properties:
+  - type: OpenAPI
+    url: openapi/nuvemshop-product-images-api-openapi.yml
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/product
+  - type: APIReference
+    url: https://tiendanube.github.io/api-documentation/resources/product
+  - type: PostmanCollection
+    url: collections/nuvemshop.postman_collection.json
+  - type: OpenCollection
+    url: collections/nuvemshop.opencollection.json
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/product-variant
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/product-image
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/category
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/order
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/customer
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/coupon
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/webhook
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/script
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/store
+- aid: nuvemshop:nuvemshop-product-variants-api
+  name: Nuvemshop / Tiendanube Product Variants API
+  description: Option combinations (size, color, etc.) owned by a product.
+  humanURL: https://tiendanube.github.io/api-documentation/resources/product
+  baseURL: https://api.tiendanube.com/2025-03/{store_id}
+  tags:
+  - Product Variants
+  properties:
+  - type: OpenAPI
+    url: openapi/nuvemshop-product-variants-api-openapi.yml
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/product
+  - type: APIReference
+    url: https://tiendanube.github.io/api-documentation/resources/product
+  - type: PostmanCollection
+    url: collections/nuvemshop.postman_collection.json
+  - type: OpenCollection
+    url: collections/nuvemshop.opencollection.json
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/product-variant
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/product-image
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/category
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/order
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/customer
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/coupon
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/webhook
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/script
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/store
+- aid: nuvemshop:nuvemshop-products-api
+  name: Nuvemshop / Tiendanube Products API
+  description: Items for sale in the store.
+  humanURL: https://tiendanube.github.io/api-documentation/resources/product
+  baseURL: https://api.tiendanube.com/2025-03/{store_id}
+  tags:
+  - Products
+  properties:
+  - type: OpenAPI
+    url: openapi/nuvemshop-products-api-openapi.yml
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/product
+  - type: APIReference
+    url: https://tiendanube.github.io/api-documentation/resources/product
+  - type: PostmanCollection
+    url: collections/nuvemshop.postman_collection.json
+  - type: OpenCollection
+    url: collections/nuvemshop.opencollection.json
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/product-variant
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/product-image
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/category
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/order
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/customer
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/coupon
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/webhook
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/script
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/store
 - aid: nuvemshop:nuvemshop-scripts-api
-  name: Nuvemshop Scripts API
+  name: Nuvemshop / Tiendanube Scripts API
+  description: Custom JavaScript injected into the storefront.
+  humanURL: https://tiendanube.github.io/api-documentation/resources/product
+  baseURL: https://api.tiendanube.com/2025-03/{store_id}
   tags:
   - Scripts
-  - Storefront
-  - Customization
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://tiendanube.github.io/api-documentation/resources/script
-  baseURL: https://api.tiendanube.com/2025-03/{store_id}
   properties:
-  - url: https://tiendanube.github.io/api-documentation/resources/script
-    type: Documentation
-  - url: openapi/nuvemshop-openapi.yml
-    type: OpenAPI
-  - url: collections/nuvemshop.postman_collection.json
-    type: PostmanCollection
-  - url: collections/nuvemshop.opencollection.json
-    type: OpenCollection
-  description: Create, list, retrieve, update, and delete script-store associations
-    that inject custom JavaScript into a merchant's storefront.
+  - type: OpenAPI
+    url: openapi/nuvemshop-scripts-api-openapi.yml
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/product
+  - type: APIReference
+    url: https://tiendanube.github.io/api-documentation/resources/product
+  - type: PostmanCollection
+    url: collections/nuvemshop.postman_collection.json
+  - type: OpenCollection
+    url: collections/nuvemshop.opencollection.json
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/product-variant
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/product-image
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/category
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/order
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/customer
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/coupon
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/webhook
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/script
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/store
 - aid: nuvemshop:nuvemshop-store-api
-  name: Nuvemshop Store API
+  name: Nuvemshop / Tiendanube Store API
+  description: Store settings and metadata.
+  humanURL: https://tiendanube.github.io/api-documentation/resources/product
+  baseURL: https://api.tiendanube.com/2025-03/{store_id}
   tags:
   - Store
-  - Settings
-  - Merchant
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://tiendanube.github.io/api-documentation/resources/store
-  baseURL: https://api.tiendanube.com/2025-03/{store_id}
   properties:
-  - url: https://tiendanube.github.io/api-documentation/resources/store
-    type: Documentation
-  - url: openapi/nuvemshop-openapi.yml
-    type: OpenAPI
-  - url: collections/nuvemshop.postman_collection.json
-    type: PostmanCollection
-  - url: collections/nuvemshop.opencollection.json
-    type: OpenCollection
-  description: Retrieve the authenticated store's general settings and metadata -
-    name, domain, country, currency, language, and contact details.
+  - type: OpenAPI
+    url: openapi/nuvemshop-store-api-openapi.yml
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/product
+  - type: APIReference
+    url: https://tiendanube.github.io/api-documentation/resources/product
+  - type: PostmanCollection
+    url: collections/nuvemshop.postman_collection.json
+  - type: OpenCollection
+    url: collections/nuvemshop.opencollection.json
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/product-variant
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/product-image
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/category
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/order
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/customer
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/coupon
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/webhook
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/script
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/store
+- aid: nuvemshop:nuvemshop-webhooks-api
+  name: Nuvemshop / Tiendanube Webhooks API
+  description: Event notification subscriptions.
+  humanURL: https://tiendanube.github.io/api-documentation/resources/product
+  baseURL: https://api.tiendanube.com/2025-03/{store_id}
+  tags:
+  - Webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/nuvemshop-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/product
+  - type: APIReference
+    url: https://tiendanube.github.io/api-documentation/resources/product
+  - type: PostmanCollection
+    url: collections/nuvemshop.postman_collection.json
+  - type: OpenCollection
+    url: collections/nuvemshop.opencollection.json
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/product-variant
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/product-image
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/category
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/order
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/customer
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/coupon
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/webhook
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/script
+  - type: Documentation
+    url: https://tiendanube.github.io/api-documentation/resources/store
 common:
 - type: AgenticAccess
   url: agentic-access/nuvemshop-agentic-access.yml

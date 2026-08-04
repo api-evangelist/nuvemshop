@@ -1,0 +1,32 @@
+{
+  "provider": "nuvemshop",
+  "sources": [
+    "nuvemshop-categories-api-openapi.yml",
+    "nuvemshop-coupons-api-openapi.yml",
+    "nuvemshop-customers-api-openapi.yml",
+    "nuvemshop-orders-api-openapi.yml",
+    "nuvemshop-product-images-api-openapi.yml",
+    "nuvemshop-product-variants-api-openapi.yml",
+    "nuvemshop-products-api-openapi.yml",
+    "nuvemshop-scripts-api-openapi.yml",
+    "nuvemshop-store-api-openapi.yml",
+    "nuvemshop-webhooks-api-openapi.yml"
+  ],
+  "outputs": [
+    "nuvemshop-categories-api-openapi.yml",
+    "nuvemshop-coupons-api-openapi.yml",
+    "nuvemshop-customers-api-openapi.yml",
+    "nuvemshop-orders-api-openapi.yml",
+    "nuvemshop-product-images-api-openapi.yml",
+    "nuvemshop-product-variants-api-openapi.yml",
+    "nuvemshop-products-api-openapi.yml",
+    "nuvemshop-scripts-api-openapi.yml",
+    "nuvemshop-store-api-openapi.yml",
+    "nuvemshop-webhooks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

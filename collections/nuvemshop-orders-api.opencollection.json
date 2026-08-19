@@ -1,0 +1,228 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Nuvemshop / Tiendanube Admin Categories Orders API",
+    "version": "2025-03"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authentication",
+      "value": "{{Authentication}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tiendanube.com/2025-03/{store_id}/orders",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination."
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Results per page (max 200)."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by order status (e.g. open, closed, cancelled, any)."
+              }
+            ]
+          },
+          "docs": "Receive a paginated list of all orders."
+        },
+        {
+          "info": {
+            "name": "Create an order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tiendanube.com/2025-03/{store_id}/orders",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new order."
+        },
+        {
+          "info": {
+            "name": "Get an order",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tiendanube.com/2025-03/{store_id}/orders/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The numeric resource id."
+              }
+            ]
+          },
+          "docs": "Receive a single order by its id."
+        },
+        {
+          "info": {
+            "name": "Update an order",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tiendanube.com/2025-03/{store_id}/orders/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The numeric resource id."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Change order attributes and/or update status."
+        },
+        {
+          "info": {
+            "name": "Get order value history",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tiendanube.com/2025-03/{store_id}/orders/:id/history/values",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The numeric resource id."
+              }
+            ]
+          },
+          "docs": "Receive the value-alteration history of an order."
+        },
+        {
+          "info": {
+            "name": "Get order edition history",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tiendanube.com/2025-03/{store_id}/orders/:id/history/editions",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The numeric resource id."
+              }
+            ]
+          },
+          "docs": "Receive the edition history of an order."
+        },
+        {
+          "info": {
+            "name": "Get order subscriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tiendanube.com/2025-03/{store_id}/orders/:id/subscriptions",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The numeric resource id."
+              }
+            ]
+          },
+          "docs": "Receive the subscriptions associated with an order."
+        },
+        {
+          "info": {
+            "name": "Close an order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tiendanube.com/2025-03/{store_id}/orders/:id/close",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The numeric resource id."
+              }
+            ]
+          },
+          "docs": "Close an order."
+        },
+        {
+          "info": {
+            "name": "Re-open an order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tiendanube.com/2025-03/{store_id}/orders/:id/open",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The numeric resource id."
+              }
+            ]
+          },
+          "docs": "Re-open a previously closed order."
+        },
+        {
+          "info": {
+            "name": "Cancel an order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tiendanube.com/2025-03/{store_id}/orders/:id/cancel",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The numeric resource id."
+              }
+            ]
+          },
+          "docs": "Cancel an order."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

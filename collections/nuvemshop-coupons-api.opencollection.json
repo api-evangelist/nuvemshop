@@ -1,0 +1,113 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Nuvemshop / Tiendanube Admin Categories Coupons API",
+    "version": "2025-03"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authentication",
+      "value": "{{Authentication}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Coupons",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List coupons",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tiendanube.com/2025-03/{store_id}/coupons"
+          },
+          "docs": "Retrieve the list of all coupons."
+        },
+        {
+          "info": {
+            "name": "Create a coupon",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tiendanube.com/2025-03/{store_id}/coupons",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new coupon."
+        },
+        {
+          "info": {
+            "name": "Get a coupon",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tiendanube.com/2025-03/{store_id}/coupons/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The numeric resource id."
+              }
+            ]
+          },
+          "docs": "Retrieve a single coupon."
+        },
+        {
+          "info": {
+            "name": "Update a coupon",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tiendanube.com/2025-03/{store_id}/coupons/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The numeric resource id."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Modify an existing coupon."
+        },
+        {
+          "info": {
+            "name": "Delete a coupon",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tiendanube.com/2025-03/{store_id}/coupons/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The numeric resource id."
+              }
+            ]
+          },
+          "docs": "Delete an existing coupon."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

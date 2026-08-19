@@ -1,0 +1,147 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Nuvemshop / Tiendanube Admin Categories Product Images API",
+    "version": "2025-03"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authentication",
+      "value": "{{Authentication}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Product Images",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List product images",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tiendanube.com/2025-03/{store_id}/products/:product_id/images",
+            "params": [
+              {
+                "name": "product_id",
+                "value": "",
+                "type": "path",
+                "description": "The numeric product id."
+              }
+            ]
+          },
+          "docs": "Receive a list of all images for a given product."
+        },
+        {
+          "info": {
+            "name": "Create a product image",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tiendanube.com/2025-03/{store_id}/products/:product_id/images",
+            "params": [
+              {
+                "name": "product_id",
+                "value": "",
+                "type": "path",
+                "description": "The numeric product id."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Attach a new image to a product, by URL or base64 attachment."
+        },
+        {
+          "info": {
+            "name": "Get a product image",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tiendanube.com/2025-03/{store_id}/products/:product_id/images/:id",
+            "params": [
+              {
+                "name": "product_id",
+                "value": "",
+                "type": "path",
+                "description": "The numeric product id."
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The numeric resource id."
+              }
+            ]
+          },
+          "docs": "Receive a single product image."
+        },
+        {
+          "info": {
+            "name": "Update a product image",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tiendanube.com/2025-03/{store_id}/products/:product_id/images/:id",
+            "params": [
+              {
+                "name": "product_id",
+                "value": "",
+                "type": "path",
+                "description": "The numeric product id."
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The numeric resource id."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Modify an existing product image."
+        },
+        {
+          "info": {
+            "name": "Delete a product image",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tiendanube.com/2025-03/{store_id}/products/:product_id/images/:id",
+            "params": [
+              {
+                "name": "product_id",
+                "value": "",
+                "type": "path",
+                "description": "The numeric product id."
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The numeric resource id."
+              }
+            ]
+          },
+          "docs": "Remove an image from a product."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

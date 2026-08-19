@@ -1,0 +1,1138 @@
+{
+  "item": [
+    {
+      "id": "10729476-981d-4e0a-9ee2-9322f589cea7",
+      "name": "Coupons",
+      "description": {
+        "content": "Discount coupons.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c8b90061-ea51-4b06-b315-7e67af6259c3",
+          "name": "List coupons",
+          "request": {
+            "name": "List coupons",
+            "description": {
+              "content": "Retrieve the list of all coupons.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "coupons"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                  "type": "any",
+                  "value": "{{store_id}}",
+                  "key": "store_id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cbbed463-41dd-4b73-b6a3-7ad049eec573",
+              "name": "A list of coupons.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "coupons"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 4214,\n    \"code\": \"string\",\n    \"type\": \"absolute\",\n    \"value\": \"string\",\n    \"valid\": false,\n    \"max_uses\": 934,\n    \"min_price\": 9923.769690739371,\n    \"start_date\": \"1965-10-24\",\n    \"end_date\": \"1973-10-16\"\n  },\n  {\n    \"id\": 5451,\n    \"code\": \"string\",\n    \"type\": \"percentage\",\n    \"value\": \"string\",\n    \"valid\": true,\n    \"max_uses\": 6106,\n    \"min_price\": 8178.450406598925,\n    \"start_date\": \"1961-05-16\",\n    \"end_date\": \"1961-09-17\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "deb3f27b-e88d-4c84-bf89-eff3d5f0623e",
+              "name": "Missing or malformed `Authentication` header, or invalid token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "coupons"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5838,\n  \"message\": \"string\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9cf71e75-7195-4b40-aaae-80db24b64e5b",
+          "name": "Create a coupon",
+          "request": {
+            "name": "Create a coupon",
+            "description": {
+              "content": "Create a new coupon.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "coupons"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                  "type": "any",
+                  "value": "{{store_id}}",
+                  "key": "store_id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"code\": \"<string>\",\n  \"type\": \"<string>\",\n  \"value\": \"<string>\",\n  \"valid\": \"<boolean>\",\n  \"max_uses\": \"<integer>\",\n  \"min_price\": \"<number>\",\n  \"start_date\": \"<date>\",\n  \"end_date\": \"<date>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e8ba410c-16c2-4708-b2bf-6279a6d2321e",
+              "name": "The created coupon.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "coupons"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"type\": \"<string>\",\n  \"value\": \"<string>\",\n  \"valid\": \"<boolean>\",\n  \"max_uses\": \"<integer>\",\n  \"min_price\": \"<number>\",\n  \"start_date\": \"<date>\",\n  \"end_date\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 7643,\n  \"code\": \"<string>\",\n  \"type\": \"<string>\",\n  \"value\": \"<string>\",\n  \"valid\": \"<boolean>\",\n  \"max_uses\": \"<integer>\",\n  \"min_price\": \"<number>\",\n  \"start_date\": \"<date>\",\n  \"end_date\": \"<date>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8060a6cd-2856-428f-97b5-21ea5063131d",
+              "name": "Missing or malformed `Authentication` header, or invalid token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "coupons"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"type\": \"<string>\",\n  \"value\": \"<string>\",\n  \"valid\": \"<boolean>\",\n  \"max_uses\": \"<integer>\",\n  \"min_price\": \"<number>\",\n  \"start_date\": \"<date>\",\n  \"end_date\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5838,\n  \"message\": \"string\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5d473b0a-3140-4ed7-ac1a-421d902a7d6c",
+              "name": "The request payload failed validation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "coupons"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"type\": \"<string>\",\n  \"value\": \"<string>\",\n  \"valid\": \"<boolean>\",\n  \"max_uses\": \"<integer>\",\n  \"min_price\": \"<number>\",\n  \"start_date\": \"<date>\",\n  \"end_date\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5838,\n  \"message\": \"string\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "553876f1-e2d8-4cd5-9ffe-b08fc51ab699",
+          "name": "Get a coupon",
+          "request": {
+            "name": "Get a coupon",
+            "description": {
+              "content": "Retrieve a single coupon.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "coupons",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) The numeric resource id."
+                },
+                {
+                  "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                  "type": "any",
+                  "value": "{{store_id}}",
+                  "key": "store_id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b9af3437-1a97-4fd6-b19a-167e2d87c145",
+              "name": "The requested coupon.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "coupons",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) The numeric resource id."
+                    },
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 7643,\n  \"code\": \"<string>\",\n  \"type\": \"<string>\",\n  \"value\": \"<string>\",\n  \"valid\": \"<boolean>\",\n  \"max_uses\": \"<integer>\",\n  \"min_price\": \"<number>\",\n  \"start_date\": \"<date>\",\n  \"end_date\": \"<date>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4da65b96-a74f-4927-9556-f0c7df95f32e",
+              "name": "Missing or malformed `Authentication` header, or invalid token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "coupons",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) The numeric resource id."
+                    },
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5838,\n  \"message\": \"string\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ced6ce73-188d-487f-bec6-4da0287bc915",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "coupons",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) The numeric resource id."
+                    },
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5838,\n  \"message\": \"string\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c5647bab-1589-4d55-bed6-8dfaa7d34002",
+          "name": "Update a coupon",
+          "request": {
+            "name": "Update a coupon",
+            "description": {
+              "content": "Modify an existing coupon.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "coupons",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) The numeric resource id."
+                },
+                {
+                  "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                  "type": "any",
+                  "value": "{{store_id}}",
+                  "key": "store_id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"code\": \"<string>\",\n  \"type\": \"<string>\",\n  \"value\": \"<string>\",\n  \"valid\": \"<boolean>\",\n  \"max_uses\": \"<integer>\",\n  \"min_price\": \"<number>\",\n  \"start_date\": \"<date>\",\n  \"end_date\": \"<date>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b13690dc-e63c-4d2c-938d-f01344ad1cb5",
+              "name": "The updated coupon.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "coupons",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) The numeric resource id."
+                    },
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"type\": \"<string>\",\n  \"value\": \"<string>\",\n  \"valid\": \"<boolean>\",\n  \"max_uses\": \"<integer>\",\n  \"min_price\": \"<number>\",\n  \"start_date\": \"<date>\",\n  \"end_date\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 7643,\n  \"code\": \"<string>\",\n  \"type\": \"<string>\",\n  \"value\": \"<string>\",\n  \"valid\": \"<boolean>\",\n  \"max_uses\": \"<integer>\",\n  \"min_price\": \"<number>\",\n  \"start_date\": \"<date>\",\n  \"end_date\": \"<date>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2357d6f0-27da-47be-9d12-fa9b5c0c6a62",
+              "name": "Missing or malformed `Authentication` header, or invalid token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "coupons",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) The numeric resource id."
+                    },
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"type\": \"<string>\",\n  \"value\": \"<string>\",\n  \"valid\": \"<boolean>\",\n  \"max_uses\": \"<integer>\",\n  \"min_price\": \"<number>\",\n  \"start_date\": \"<date>\",\n  \"end_date\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5838,\n  \"message\": \"string\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "40e5bc20-1df4-436a-b90f-51df14b03523",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "coupons",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) The numeric resource id."
+                    },
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"type\": \"<string>\",\n  \"value\": \"<string>\",\n  \"valid\": \"<boolean>\",\n  \"max_uses\": \"<integer>\",\n  \"min_price\": \"<number>\",\n  \"start_date\": \"<date>\",\n  \"end_date\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5838,\n  \"message\": \"string\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e2b4f690-01e6-4741-9aac-940f12ad2de5",
+          "name": "Delete a coupon",
+          "request": {
+            "name": "Delete a coupon",
+            "description": {
+              "content": "Delete an existing coupon.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "coupons",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) The numeric resource id."
+                },
+                {
+                  "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                  "type": "any",
+                  "value": "{{store_id}}",
+                  "key": "store_id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a8680ba6-a825-4179-a541-37e6fd187d6e",
+              "name": "Deletion confirmation (empty object).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "coupons",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) The numeric resource id."
+                    },
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "644b05f0-5294-4918-b8d3-516a57706425",
+              "name": "Missing or malformed `Authentication` header, or invalid token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "coupons",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) The numeric resource id."
+                    },
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5838,\n  \"message\": \"string\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f4f58f16-c708-40cf-8bd4-8bdfd8e36671",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "coupons",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) The numeric resource id."
+                    },
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5838,\n  \"message\": \"string\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The numeric store id (user_id) returned during OAuth authorization.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "0",
+      "key": "store_id"
+    },
+    {
+      "type": "string",
+      "value": "https://api.tiendanube.com/2025-03/{{store_id}}",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authentication"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "feffaec2-2b79-4cd1-8b33-b5716bc5a3fc",
+    "name": "Nuvemshop / Tiendanube Admin Categories Coupons API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Store-scoped REST Admin API for the Nuvemshop (Tiendanube) e-commerce platform. This document models a grounded, representative subset of the public API - products, product variants, product images, categories, orders, customers, coupons, webhooks, scripts, and store - as documented at https://tiendanube.github.io/api-documentation/.\n\nEvery path is relative to a per-store base that embeds the store id, for example `https://api.tiendanube.com/2025-03/{store_id}`. The Brazilian mirror `https://api.nuvemshop.com.br/2025-03/{store_id}` serves the same API, and the long-standing `v1` path (`https://api.tiendanube.com/v1/{store_id}`) remains available as the legacy equivalent.\n\nAuthentication is OAuth 2 (authorization code grant). The resulting non-expiring access token is sent in a NON-STANDARD header named `Authentication` with a lowercase `bearer` prefix (`Authentication: bearer ACCESS_TOKEN`) - using `Authorization` or a different case returns 401. Every request must also send a descriptive `User-Agent` header identifying the app and a contact (name/email or URL); omitting it returns 400.\n\nNOTE ON MODELING: endpoint paths, methods, and the auth/header/rate-limit behavior below are grounded in the live documentation. Request and response body schemas are simplified representative models (marked with additionalProperties) rather than the provider's full field-level schema.\n\nContact Support:\n Name: Nuvemshop / Tiendanube Developers",
+      "type": "text/plain"
+    }
+  }
+}

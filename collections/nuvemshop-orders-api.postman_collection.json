@@ -1,0 +1,2416 @@
+{
+  "item": [
+    {
+      "id": "e287736f-5669-40e2-bcc1-ff0f8fc59c28",
+      "name": "Orders",
+      "description": {
+        "content": "Customer purchases and their lifecycle.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "734de72d-2d41-4caa-a77d-aecb6d319a7f",
+          "name": "List orders",
+          "request": {
+            "name": "List orders",
+            "description": {
+              "content": "Receive a paginated list of all orders.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number for pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "30",
+                  "description": "Results per page (max 200)."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter by order status (e.g. open, closed, cancelled, any)."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                  "type": "any",
+                  "value": "{{store_id}}",
+                  "key": "store_id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c81611fd-86d4-4cef-9b17-87c44c2ea908",
+              "name": "A list of orders.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "30"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 6090,\n    \"number\": 462,\n    \"token\": \"string\",\n    \"currency\": \"string\",\n    \"total\": \"string\",\n    \"customer\": {\n      \"id\": 4382,\n      \"created_at\": \"1973-05-04T10:54:47.434Z\",\n      \"name\": \"string\",\n      \"email\": \"bfda2BQJ9YocM@v.kpun\",\n      \"phone\": \"string\",\n      \"identification\": \"string\",\n      \"note\": \"string\",\n      \"addresses\": [\n        {\n          \"key_0\": \"string\",\n          \"key_1\": 2740.781836428702\n        },\n        {\n          \"key_0\": true\n        }\n      ],\n      \"key_0\": 1798.0734929616704,\n      \"key_1\": 8278.408807749116\n    },\n    \"created_at\": \"2007-03-30T15:53:16.351Z\",\n    \"status\": \"cancelled\",\n    \"payment_status\": \"string\",\n    \"shipping_status\": \"string\",\n    \"owner_note\": \"string\",\n    \"products\": [\n      {\n        \"key_0\": \"string\",\n        \"key_1\": 7915\n      },\n      {\n        \"key_0\": \"string\",\n        \"key_1\": true,\n        \"key_2\": \"string\"\n      }\n    ],\n    \"key_0\": 8746.547136693054\n  },\n  {\n    \"id\": 1035,\n    \"number\": 1823,\n    \"token\": \"string\",\n    \"currency\": \"string\",\n    \"total\": \"string\",\n    \"customer\": {\n      \"id\": 360,\n      \"created_at\": \"1980-12-17T22:33:41.170Z\",\n      \"name\": \"string\",\n      \"email\": \"CJ-gsfyy@LIBYaBDBytZYbAvwUwzjCPlv.qig\",\n      \"phone\": \"string\",\n      \"identification\": \"string\",\n      \"note\": \"string\",\n      \"addresses\": [\n        {\n          \"key_0\": \"string\"\n        },\n        {\n          \"key_0\": \"string\",\n          \"key_1\": 8120.872864086796\n        }\n      ],\n      \"key_0\": \"string\",\n      \"key_1\": 2155,\n      \"key_2\": 1250.0027838485316\n    },\n    \"created_at\": \"1994-09-22T10:09:00.389Z\",\n    \"status\": \"cancelled\",\n    \"payment_status\": \"string\",\n    \"shipping_status\": \"string\",\n    \"owner_note\": \"string\",\n    \"products\": [\n      {\n        \"key_0\": false\n      },\n      {\n        \"key_0\": 6448\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "32a0e333-2c50-4b9f-a23e-967d1d89685a",
+              "name": "Missing or malformed `Authentication` header, or invalid token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "30"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7654,\n  \"message\": \"string\",\n  \"description\": \"string\",\n  \"key_0\": 4628\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cf1446d0-8ab6-4bac-a0b3-8f6bc11d2565",
+              "name": "Too many requests - the per-store leaky bucket overflowed. Inspect the x-rate-limit-limit, x-rate-limit-remaining, and x-rate-limit-reset headers and back off.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "30"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Total requests the bucket can hold.",
+                  "key": "x-rate-limit-limit",
+                  "value": "6429"
+                },
+                {
+                  "disabled": false,
+                  "description": "Remaining capacity before the bucket fills.",
+                  "key": "x-rate-limit-remaining",
+                  "value": "6429"
+                },
+                {
+                  "disabled": false,
+                  "description": "Milliseconds remaining to completely empty the bucket.",
+                  "key": "x-rate-limit-reset",
+                  "value": "6429"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7654,\n  \"message\": \"string\",\n  \"description\": \"string\",\n  \"key_0\": 4628\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "36d7d3ac-e3eb-4ef5-a8ad-4c54e905527d",
+          "name": "Create an order",
+          "request": {
+            "name": "Create an order",
+            "description": {
+              "content": "Create a new order.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                  "type": "any",
+                  "value": "{{store_id}}",
+                  "key": "store_id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"<string>\",\n  \"payment_status\": \"<string>\",\n  \"shipping_status\": \"<string>\",\n  \"owner_note\": \"<string>\",\n  \"products\": [\n    {\n      \"key_0\": 9362,\n      \"key_1\": 1204.6705713013207\n    },\n    {\n      \"key_0\": 951\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "195546d1-5a78-4193-a876-b16019ef835a",
+              "name": "The created order.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\",\n  \"payment_status\": \"<string>\",\n  \"shipping_status\": \"<string>\",\n  \"owner_note\": \"<string>\",\n  \"products\": [\n    {\n      \"key_0\": 5125.545377995846,\n      \"key_1\": 2725\n    },\n    {\n      \"key_0\": 9858.180829678045,\n      \"key_1\": \"string\",\n      \"key_2\": true\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 2113,\n  \"number\": 9522,\n  \"token\": \"string\",\n  \"currency\": \"string\",\n  \"total\": \"string\",\n  \"customer\": {\n    \"id\": 3038,\n    \"created_at\": \"2010-04-09T20:12:38.377Z\",\n    \"name\": \"string\",\n    \"email\": \"mJJAxhVbDtFtVmA@ULEJJptoJWLoYXXKhSvNdesYySIC.yemb\",\n    \"phone\": \"string\",\n    \"identification\": \"string\",\n    \"note\": \"string\",\n    \"addresses\": [\n      {\n        \"key_0\": 3008\n      },\n      {\n        \"key_0\": 6077,\n        \"key_1\": \"string\",\n        \"key_2\": false\n      }\n    ]\n  },\n  \"created_at\": \"2025-01-23T00:02:45.843Z\",\n  \"status\": \"<string>\",\n  \"payment_status\": \"<string>\",\n  \"shipping_status\": \"<string>\",\n  \"owner_note\": \"<string>\",\n  \"products\": [\n    {\n      \"key_0\": true,\n      \"key_1\": \"string\",\n      \"key_2\": 537.4670761054313\n    },\n    {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\",\n      \"key_2\": 9879.258193265092\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8303f16c-934a-4915-a016-52007eeec42f",
+              "name": "Missing or malformed `Authentication` header, or invalid token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\",\n  \"payment_status\": \"<string>\",\n  \"shipping_status\": \"<string>\",\n  \"owner_note\": \"<string>\",\n  \"products\": [\n    {\n      \"key_0\": 5125.545377995846,\n      \"key_1\": 2725\n    },\n    {\n      \"key_0\": 9858.180829678045,\n      \"key_1\": \"string\",\n      \"key_2\": true\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7654,\n  \"message\": \"string\",\n  \"description\": \"string\",\n  \"key_0\": 4628\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "71956f11-e8fa-417c-82b2-eeba14a9b626",
+              "name": "The request payload failed validation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\",\n  \"payment_status\": \"<string>\",\n  \"shipping_status\": \"<string>\",\n  \"owner_note\": \"<string>\",\n  \"products\": [\n    {\n      \"key_0\": 5125.545377995846,\n      \"key_1\": 2725\n    },\n    {\n      \"key_0\": 9858.180829678045,\n      \"key_1\": \"string\",\n      \"key_2\": true\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7654,\n  \"message\": \"string\",\n  \"description\": \"string\",\n  \"key_0\": 4628\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "05563d91-5b88-469d-87e0-2b35793791ce",
+          "name": "Get an order",
+          "request": {
+            "name": "Get an order",
+            "description": {
+              "content": "Receive a single order by its id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) The numeric resource id."
+                },
+                {
+                  "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                  "type": "any",
+                  "value": "{{store_id}}",
+                  "key": "store_id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6763b834-1d91-4211-adc1-a3f6ad4502b4",
+              "name": "The requested order.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) The numeric resource id."
+                    },
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 2113,\n  \"number\": 9522,\n  \"token\": \"string\",\n  \"currency\": \"string\",\n  \"total\": \"string\",\n  \"customer\": {\n    \"id\": 3038,\n    \"created_at\": \"2010-04-09T20:12:38.377Z\",\n    \"name\": \"string\",\n    \"email\": \"mJJAxhVbDtFtVmA@ULEJJptoJWLoYXXKhSvNdesYySIC.yemb\",\n    \"phone\": \"string\",\n    \"identification\": \"string\",\n    \"note\": \"string\",\n    \"addresses\": [\n      {\n        \"key_0\": 3008\n      },\n      {\n        \"key_0\": 6077,\n        \"key_1\": \"string\",\n        \"key_2\": false\n      }\n    ]\n  },\n  \"created_at\": \"2025-01-23T00:02:45.843Z\",\n  \"status\": \"<string>\",\n  \"payment_status\": \"<string>\",\n  \"shipping_status\": \"<string>\",\n  \"owner_note\": \"<string>\",\n  \"products\": [\n    {\n      \"key_0\": true,\n      \"key_1\": \"string\",\n      \"key_2\": 537.4670761054313\n    },\n    {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\",\n      \"key_2\": 9879.258193265092\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7f638dfb-6bec-4dc1-9950-ea673818d011",
+              "name": "Missing or malformed `Authentication` header, or invalid token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) The numeric resource id."
+                    },
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7654,\n  \"message\": \"string\",\n  \"description\": \"string\",\n  \"key_0\": 4628\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c0c51817-ea3f-48ed-aceb-4a856b0566d6",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) The numeric resource id."
+                    },
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7654,\n  \"message\": \"string\",\n  \"description\": \"string\",\n  \"key_0\": 4628\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "88284264-df23-43f8-8392-85c11abd5542",
+          "name": "Update an order",
+          "request": {
+            "name": "Update an order",
+            "description": {
+              "content": "Change order attributes and/or update status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) The numeric resource id."
+                },
+                {
+                  "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                  "type": "any",
+                  "value": "{{store_id}}",
+                  "key": "store_id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"<string>\",\n  \"payment_status\": \"<string>\",\n  \"shipping_status\": \"<string>\",\n  \"owner_note\": \"<string>\",\n  \"products\": [\n    {\n      \"key_0\": 9362,\n      \"key_1\": 1204.6705713013207\n    },\n    {\n      \"key_0\": 951\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "219dc059-ef70-498a-be05-6c3c559fb572",
+              "name": "The updated order.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) The numeric resource id."
+                    },
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\",\n  \"payment_status\": \"<string>\",\n  \"shipping_status\": \"<string>\",\n  \"owner_note\": \"<string>\",\n  \"products\": [\n    {\n      \"key_0\": 5125.545377995846,\n      \"key_1\": 2725\n    },\n    {\n      \"key_0\": 9858.180829678045,\n      \"key_1\": \"string\",\n      \"key_2\": true\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 2113,\n  \"number\": 9522,\n  \"token\": \"string\",\n  \"currency\": \"string\",\n  \"total\": \"string\",\n  \"customer\": {\n    \"id\": 3038,\n    \"created_at\": \"2010-04-09T20:12:38.377Z\",\n    \"name\": \"string\",\n    \"email\": \"mJJAxhVbDtFtVmA@ULEJJptoJWLoYXXKhSvNdesYySIC.yemb\",\n    \"phone\": \"string\",\n    \"identification\": \"string\",\n    \"note\": \"string\",\n    \"addresses\": [\n      {\n        \"key_0\": 3008\n      },\n      {\n        \"key_0\": 6077,\n        \"key_1\": \"string\",\n        \"key_2\": false\n      }\n    ]\n  },\n  \"created_at\": \"2025-01-23T00:02:45.843Z\",\n  \"status\": \"<string>\",\n  \"payment_status\": \"<string>\",\n  \"shipping_status\": \"<string>\",\n  \"owner_note\": \"<string>\",\n  \"products\": [\n    {\n      \"key_0\": true,\n      \"key_1\": \"string\",\n      \"key_2\": 537.4670761054313\n    },\n    {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\",\n      \"key_2\": 9879.258193265092\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "24370077-9817-4ad3-bc68-d24c8bdc1bcf",
+              "name": "Missing or malformed `Authentication` header, or invalid token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) The numeric resource id."
+                    },
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\",\n  \"payment_status\": \"<string>\",\n  \"shipping_status\": \"<string>\",\n  \"owner_note\": \"<string>\",\n  \"products\": [\n    {\n      \"key_0\": 5125.545377995846,\n      \"key_1\": 2725\n    },\n    {\n      \"key_0\": 9858.180829678045,\n      \"key_1\": \"string\",\n      \"key_2\": true\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7654,\n  \"message\": \"string\",\n  \"description\": \"string\",\n  \"key_0\": 4628\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2460148c-6968-4345-8a21-96c124f4aacf",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) The numeric resource id."
+                    },
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\",\n  \"payment_status\": \"<string>\",\n  \"shipping_status\": \"<string>\",\n  \"owner_note\": \"<string>\",\n  \"products\": [\n    {\n      \"key_0\": 5125.545377995846,\n      \"key_1\": 2725\n    },\n    {\n      \"key_0\": 9858.180829678045,\n      \"key_1\": \"string\",\n      \"key_2\": true\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7654,\n  \"message\": \"string\",\n  \"description\": \"string\",\n  \"key_0\": 4628\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "47a77da4-2451-46d0-a8d1-5217f5fc6f99",
+          "name": "Get order value history",
+          "request": {
+            "name": "Get order value history",
+            "description": {
+              "content": "Receive the value-alteration history of an order.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders",
+                ":id",
+                "history",
+                "values"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) The numeric resource id."
+                },
+                {
+                  "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                  "type": "any",
+                  "value": "{{store_id}}",
+                  "key": "store_id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "773d70da-a2c7-4789-bfbb-9a82b93d742d",
+              "name": "The order value history.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":id",
+                    "history",
+                    "values"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) The numeric resource id."
+                    },
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2ba26ff7-3e29-41d7-8d9c-cd3b1eadff13",
+              "name": "Missing or malformed `Authentication` header, or invalid token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":id",
+                    "history",
+                    "values"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) The numeric resource id."
+                    },
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7654,\n  \"message\": \"string\",\n  \"description\": \"string\",\n  \"key_0\": 4628\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1bba20d5-873f-4a4b-aa06-1f4cd19c5ce1",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":id",
+                    "history",
+                    "values"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) The numeric resource id."
+                    },
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7654,\n  \"message\": \"string\",\n  \"description\": \"string\",\n  \"key_0\": 4628\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7c27322b-710d-4161-9455-bf7aa7b74d13",
+          "name": "Get order edition history",
+          "request": {
+            "name": "Get order edition history",
+            "description": {
+              "content": "Receive the edition history of an order.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders",
+                ":id",
+                "history",
+                "editions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) The numeric resource id."
+                },
+                {
+                  "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                  "type": "any",
+                  "value": "{{store_id}}",
+                  "key": "store_id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fc1005d8-b71d-414e-9e52-28a5e2fb8ed4",
+              "name": "The order edition history.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":id",
+                    "history",
+                    "editions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) The numeric resource id."
+                    },
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "acf88ece-aacb-435b-9821-fab9b5f3a4bf",
+              "name": "Missing or malformed `Authentication` header, or invalid token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":id",
+                    "history",
+                    "editions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) The numeric resource id."
+                    },
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7654,\n  \"message\": \"string\",\n  \"description\": \"string\",\n  \"key_0\": 4628\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "40d45e72-5006-467d-ad1f-45584823dc37",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":id",
+                    "history",
+                    "editions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) The numeric resource id."
+                    },
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7654,\n  \"message\": \"string\",\n  \"description\": \"string\",\n  \"key_0\": 4628\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a01aa069-3a15-4cea-ae24-cd666e1f5434",
+          "name": "Get order subscriptions",
+          "request": {
+            "name": "Get order subscriptions",
+            "description": {
+              "content": "Receive the subscriptions associated with an order.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders",
+                ":id",
+                "subscriptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) The numeric resource id."
+                },
+                {
+                  "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                  "type": "any",
+                  "value": "{{store_id}}",
+                  "key": "store_id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "341c9d8c-511e-4301-aa8e-a571e9033202",
+              "name": "The order subscriptions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":id",
+                    "subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) The numeric resource id."
+                    },
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5df0021e-3863-41d4-90cd-427db4ddcf20",
+              "name": "Missing or malformed `Authentication` header, or invalid token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":id",
+                    "subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) The numeric resource id."
+                    },
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7654,\n  \"message\": \"string\",\n  \"description\": \"string\",\n  \"key_0\": 4628\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bfdfe01f-e53a-4c0d-a512-9b0bd36a027b",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":id",
+                    "subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) The numeric resource id."
+                    },
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7654,\n  \"message\": \"string\",\n  \"description\": \"string\",\n  \"key_0\": 4628\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9ccd84e2-5313-439b-9be4-87b43a2f9a45",
+          "name": "Close an order",
+          "request": {
+            "name": "Close an order",
+            "description": {
+              "content": "Close an order.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders",
+                ":id",
+                "close"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) The numeric resource id."
+                },
+                {
+                  "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                  "type": "any",
+                  "value": "{{store_id}}",
+                  "key": "store_id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6f93a7ea-8efe-41c5-b7f8-1547bd782191",
+              "name": "The closed order.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":id",
+                    "close"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) The numeric resource id."
+                    },
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 2113,\n  \"number\": 9522,\n  \"token\": \"string\",\n  \"currency\": \"string\",\n  \"total\": \"string\",\n  \"customer\": {\n    \"id\": 3038,\n    \"created_at\": \"2010-04-09T20:12:38.377Z\",\n    \"name\": \"string\",\n    \"email\": \"mJJAxhVbDtFtVmA@ULEJJptoJWLoYXXKhSvNdesYySIC.yemb\",\n    \"phone\": \"string\",\n    \"identification\": \"string\",\n    \"note\": \"string\",\n    \"addresses\": [\n      {\n        \"key_0\": 3008\n      },\n      {\n        \"key_0\": 6077,\n        \"key_1\": \"string\",\n        \"key_2\": false\n      }\n    ]\n  },\n  \"created_at\": \"2025-01-23T00:02:45.843Z\",\n  \"status\": \"<string>\",\n  \"payment_status\": \"<string>\",\n  \"shipping_status\": \"<string>\",\n  \"owner_note\": \"<string>\",\n  \"products\": [\n    {\n      \"key_0\": true,\n      \"key_1\": \"string\",\n      \"key_2\": 537.4670761054313\n    },\n    {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\",\n      \"key_2\": 9879.258193265092\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fdb57c30-67bb-4c90-8aba-176313a4fd1b",
+              "name": "Missing or malformed `Authentication` header, or invalid token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":id",
+                    "close"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) The numeric resource id."
+                    },
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7654,\n  \"message\": \"string\",\n  \"description\": \"string\",\n  \"key_0\": 4628\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f73a3b94-8523-463b-b75a-a86ab343713b",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":id",
+                    "close"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) The numeric resource id."
+                    },
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7654,\n  \"message\": \"string\",\n  \"description\": \"string\",\n  \"key_0\": 4628\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "112f25ad-a42e-45b1-955a-c4fe1c7ef912",
+          "name": "Re-open an order",
+          "request": {
+            "name": "Re-open an order",
+            "description": {
+              "content": "Re-open a previously closed order.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders",
+                ":id",
+                "open"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) The numeric resource id."
+                },
+                {
+                  "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                  "type": "any",
+                  "value": "{{store_id}}",
+                  "key": "store_id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2ef55d04-44ee-4ca0-81a6-8fbbb64afb6c",
+              "name": "The re-opened order.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":id",
+                    "open"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) The numeric resource id."
+                    },
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 2113,\n  \"number\": 9522,\n  \"token\": \"string\",\n  \"currency\": \"string\",\n  \"total\": \"string\",\n  \"customer\": {\n    \"id\": 3038,\n    \"created_at\": \"2010-04-09T20:12:38.377Z\",\n    \"name\": \"string\",\n    \"email\": \"mJJAxhVbDtFtVmA@ULEJJptoJWLoYXXKhSvNdesYySIC.yemb\",\n    \"phone\": \"string\",\n    \"identification\": \"string\",\n    \"note\": \"string\",\n    \"addresses\": [\n      {\n        \"key_0\": 3008\n      },\n      {\n        \"key_0\": 6077,\n        \"key_1\": \"string\",\n        \"key_2\": false\n      }\n    ]\n  },\n  \"created_at\": \"2025-01-23T00:02:45.843Z\",\n  \"status\": \"<string>\",\n  \"payment_status\": \"<string>\",\n  \"shipping_status\": \"<string>\",\n  \"owner_note\": \"<string>\",\n  \"products\": [\n    {\n      \"key_0\": true,\n      \"key_1\": \"string\",\n      \"key_2\": 537.4670761054313\n    },\n    {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\",\n      \"key_2\": 9879.258193265092\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ccc287e8-5226-4920-b18c-783c1cbbf1e1",
+              "name": "Missing or malformed `Authentication` header, or invalid token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":id",
+                    "open"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) The numeric resource id."
+                    },
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7654,\n  \"message\": \"string\",\n  \"description\": \"string\",\n  \"key_0\": 4628\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "86b1733f-d24c-4b0d-8b06-92a1ef43f56e",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":id",
+                    "open"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) The numeric resource id."
+                    },
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7654,\n  \"message\": \"string\",\n  \"description\": \"string\",\n  \"key_0\": 4628\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c0a4c1fe-b214-466f-b44e-1b2f5d405063",
+          "name": "Cancel an order",
+          "request": {
+            "name": "Cancel an order",
+            "description": {
+              "content": "Cancel an order.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders",
+                ":id",
+                "cancel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) The numeric resource id."
+                },
+                {
+                  "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                  "type": "any",
+                  "value": "{{store_id}}",
+                  "key": "store_id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c65cc448-dcd2-4164-877f-8cc3e16cb1b3",
+              "name": "The cancelled order.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":id",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) The numeric resource id."
+                    },
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 2113,\n  \"number\": 9522,\n  \"token\": \"string\",\n  \"currency\": \"string\",\n  \"total\": \"string\",\n  \"customer\": {\n    \"id\": 3038,\n    \"created_at\": \"2010-04-09T20:12:38.377Z\",\n    \"name\": \"string\",\n    \"email\": \"mJJAxhVbDtFtVmA@ULEJJptoJWLoYXXKhSvNdesYySIC.yemb\",\n    \"phone\": \"string\",\n    \"identification\": \"string\",\n    \"note\": \"string\",\n    \"addresses\": [\n      {\n        \"key_0\": 3008\n      },\n      {\n        \"key_0\": 6077,\n        \"key_1\": \"string\",\n        \"key_2\": false\n      }\n    ]\n  },\n  \"created_at\": \"2025-01-23T00:02:45.843Z\",\n  \"status\": \"<string>\",\n  \"payment_status\": \"<string>\",\n  \"shipping_status\": \"<string>\",\n  \"owner_note\": \"<string>\",\n  \"products\": [\n    {\n      \"key_0\": true,\n      \"key_1\": \"string\",\n      \"key_2\": 537.4670761054313\n    },\n    {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\",\n      \"key_2\": 9879.258193265092\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d2c72d70-d465-439a-912c-a80454ccb0de",
+              "name": "Missing or malformed `Authentication` header, or invalid token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":id",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) The numeric resource id."
+                    },
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7654,\n  \"message\": \"string\",\n  \"description\": \"string\",\n  \"key_0\": 4628\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c101a7ad-0ed2-47fd-a0dc-a763eb283ef1",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":id",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) The numeric resource id."
+                    },
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7654,\n  \"message\": \"string\",\n  \"description\": \"string\",\n  \"key_0\": 4628\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The numeric store id (user_id) returned during OAuth authorization.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "0",
+      "key": "store_id"
+    },
+    {
+      "type": "string",
+      "value": "https://api.tiendanube.com/2025-03/{{store_id}}",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authentication"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "99bc7609-19a5-45c9-9e41-a03ed910551e",
+    "name": "Nuvemshop / Tiendanube Admin Categories Orders API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Store-scoped REST Admin API for the Nuvemshop (Tiendanube) e-commerce platform. This document models a grounded, representative subset of the public API - products, product variants, product images, categories, orders, customers, coupons, webhooks, scripts, and store - as documented at https://tiendanube.github.io/api-documentation/.\n\nEvery path is relative to a per-store base that embeds the store id, for example `https://api.tiendanube.com/2025-03/{store_id}`. The Brazilian mirror `https://api.nuvemshop.com.br/2025-03/{store_id}` serves the same API, and the long-standing `v1` path (`https://api.tiendanube.com/v1/{store_id}`) remains available as the legacy equivalent.\n\nAuthentication is OAuth 2 (authorization code grant). The resulting non-expiring access token is sent in a NON-STANDARD header named `Authentication` with a lowercase `bearer` prefix (`Authentication: bearer ACCESS_TOKEN`) - using `Authorization` or a different case returns 401. Every request must also send a descriptive `User-Agent` header identifying the app and a contact (name/email or URL); omitting it returns 400.\n\nNOTE ON MODELING: endpoint paths, methods, and the auth/header/rate-limit behavior below are grounded in the live documentation. Request and response body schemas are simplified representative models (marked with additionalProperties) rather than the provider's full field-level schema.\n\nContact Support:\n Name: Nuvemshop / Tiendanube Developers",
+      "type": "text/plain"
+    }
+  }
+}

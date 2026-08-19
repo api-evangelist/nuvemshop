@@ -1,0 +1,1885 @@
+{
+  "item": [
+    {
+      "id": "959e95b7-cfdd-444e-82aa-118e59258b2e",
+      "name": "Products",
+      "description": {
+        "content": "Items for sale in the store.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "29b1617a-e455-425c-b91c-c8d21c83611f",
+          "name": "List products",
+          "request": {
+            "name": "List products",
+            "description": {
+              "content": "Receive a paginated list of all products in the store.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "products"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number for pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "30",
+                  "description": "Results per page (max 200)."
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Filter products by a free-text search term."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields to return."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                  "type": "any",
+                  "value": "{{store_id}}",
+                  "key": "store_id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "18f1342d-e031-457e-91a7-47d496b6b3cb",
+              "name": "A list of products.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "30"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 5821,\n    \"created_at\": \"1953-10-07T05:36:23.025Z\",\n    \"updated_at\": \"2008-03-25T14:57:02.996Z\",\n    \"name\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    \"description\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    \"handle\": {\n      \"key_0\": \"string\"\n    },\n    \"published\": false,\n    \"free_shipping\": true,\n    \"categories\": [\n      5246,\n      6664\n    ],\n    \"variants\": [\n      {\n        \"price\": \"string\",\n        \"promotional_price\": \"string\",\n        \"stock\": 9872,\n        \"stock_management\": true,\n        \"sku\": \"string\",\n        \"weight\": \"string\",\n        \"values\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ]\n      },\n      {\n        \"price\": \"string\",\n        \"promotional_price\": \"string\",\n        \"stock\": 7770,\n        \"stock_management\": true,\n        \"sku\": \"string\",\n        \"weight\": \"string\",\n        \"values\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ]\n      }\n    ],\n    \"images\": [\n      {\n        \"src\": \"http://HSPJTTJfJChgbudXzaWWYZypMpVYCWpL.oypvwAKILIgyWfu+fwAca4Vr,bXOsLJPj\",\n        \"attachment\": \"string\",\n        \"filename\": \"string\",\n        \"position\": 2788\n      },\n      {\n        \"src\": \"https://YYFSLtWxuh.xuzZFwFFQ5J0752wc4n17SL3iHhchgCRuBfheQnVs+YWPfI7cNL3TyBbPEqu6kBEGxcoOqZ\",\n        \"attachment\": \"string\",\n        \"filename\": \"string\",\n        \"position\": 1017,\n        \"key_0\": 4350.669338952817\n      }\n    ]\n  },\n  {\n    \"id\": 786,\n    \"created_at\": \"2002-10-02T20:36:47.040Z\",\n    \"updated_at\": \"1956-03-30T13:50:06.765Z\",\n    \"name\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    \"description\": {\n      \"key_0\": \"string\"\n    },\n    \"handle\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    \"published\": false,\n    \"free_shipping\": true,\n    \"categories\": [\n      8787,\n      5711\n    ],\n    \"variants\": [\n      {\n        \"price\": \"string\",\n        \"promotional_price\": \"string\",\n        \"stock\": 66,\n        \"stock_management\": true,\n        \"sku\": \"string\",\n        \"weight\": \"string\",\n        \"values\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"key_0\": false,\n        \"key_1\": 7153,\n        \"key_2\": \"string\",\n        \"key_3\": \"string\",\n        \"key_4\": 8177\n      },\n      {\n        \"price\": \"string\",\n        \"promotional_price\": \"string\",\n        \"stock\": 9174,\n        \"stock_management\": false,\n        \"sku\": \"string\",\n        \"weight\": \"string\",\n        \"values\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ]\n      }\n    ],\n    \"images\": [\n      {\n        \"src\": \"http://gKsaMTjJrXOUfn.qintalj+QA0s4bzIypgU208MDZXqIEglWKXsYr78aZNuKStMrMGacKsm4UHR\",\n        \"attachment\": \"string\",\n        \"filename\": \"string\",\n        \"position\": 5153\n      },\n      {\n        \"src\": \"https://lgONjDzCPJnTfUBvmczDQCURfnVTR.iujsXIFNQyyyaYwG\",\n        \"attachment\": \"string\",\n        \"filename\": \"string\",\n        \"position\": 3206,\n        \"key_0\": 9543.86533314545\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5bbd41f7-02a5-4017-b348-1320fdd88a82",
+              "name": "Missing or malformed `Authentication` header, or invalid token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "30"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6862,\n  \"message\": \"string\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "974fb255-ed17-4f85-b235-419104929d52",
+              "name": "Too many requests - the per-store leaky bucket overflowed. Inspect the x-rate-limit-limit, x-rate-limit-remaining, and x-rate-limit-reset headers and back off.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "30"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Total requests the bucket can hold.",
+                  "key": "x-rate-limit-limit",
+                  "value": "9790"
+                },
+                {
+                  "disabled": false,
+                  "description": "Remaining capacity before the bucket fills.",
+                  "key": "x-rate-limit-remaining",
+                  "value": "9790"
+                },
+                {
+                  "disabled": false,
+                  "description": "Milliseconds remaining to completely empty the bucket.",
+                  "key": "x-rate-limit-reset",
+                  "value": "9790"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6862,\n  \"message\": \"string\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dc5a755d-690d-4c47-85b9-0e81c5785d10",
+          "name": "Create a product",
+          "request": {
+            "name": "Create a product",
+            "description": {
+              "content": "Create a new product in the store.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "products"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                  "type": "any",
+                  "value": "{{store_id}}",
+                  "key": "store_id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"description\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"handle\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"published\": \"<boolean>\",\n  \"free_shipping\": \"<boolean>\",\n  \"categories\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"variants\": [\n    {\n      \"price\": \"<string>\",\n      \"promotional_price\": \"<string>\",\n      \"stock\": \"<integer>\",\n      \"stock_management\": \"<boolean>\",\n      \"sku\": \"<string>\",\n      \"weight\": \"<string>\",\n      \"values\": [\n        {\n          \"key_0\": \"<string>\"\n        },\n        {\n          \"key_0\": \"<string>\"\n        }\n      ],\n      \"key_0\": false,\n      \"key_1\": 8069\n    },\n    {\n      \"price\": \"<string>\",\n      \"promotional_price\": \"<string>\",\n      \"stock\": \"<integer>\",\n      \"stock_management\": \"<boolean>\",\n      \"sku\": \"<string>\",\n      \"weight\": \"<string>\",\n      \"values\": [\n        {\n          \"key_0\": \"<string>\"\n        },\n        {\n          \"key_0\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"images\": [\n    {\n      \"src\": \"<uri>\",\n      \"attachment\": \"<string>\",\n      \"filename\": \"<string>\",\n      \"position\": \"<integer>\",\n      \"key_0\": 1238,\n      \"key_1\": \"string\"\n    },\n    {\n      \"src\": \"<uri>\",\n      \"attachment\": \"<string>\",\n      \"filename\": \"<string>\",\n      \"position\": \"<integer>\"\n    }\n  ],\n  \"key_0\": false,\n  \"key_1\": 4835.334914087649\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ee809e62-591c-4a65-a883-0b38ca4ef790",
+              "name": "The created product.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\",\n    \"key_4\": \"<string>\"\n  },\n  \"description\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"handle\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\"\n  },\n  \"published\": \"<boolean>\",\n  \"free_shipping\": \"<boolean>\",\n  \"categories\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"variants\": [\n    {\n      \"price\": \"<string>\",\n      \"promotional_price\": \"<string>\",\n      \"stock\": \"<integer>\",\n      \"stock_management\": \"<boolean>\",\n      \"sku\": \"<string>\",\n      \"weight\": \"<string>\",\n      \"values\": [\n        {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        },\n        {\n          \"key_0\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"price\": \"<string>\",\n      \"promotional_price\": \"<string>\",\n      \"stock\": \"<integer>\",\n      \"stock_management\": \"<boolean>\",\n      \"sku\": \"<string>\",\n      \"weight\": \"<string>\",\n      \"values\": [\n        {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\",\n          \"key_3\": \"<string>\"\n        },\n        {\n          \"key_0\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"images\": [\n    {\n      \"src\": \"<uri>\",\n      \"attachment\": \"<string>\",\n      \"filename\": \"<string>\",\n      \"position\": \"<integer>\",\n      \"key_0\": 8371\n    },\n    {\n      \"src\": \"<uri>\",\n      \"attachment\": \"<string>\",\n      \"filename\": \"<string>\",\n      \"position\": \"<integer>\",\n      \"key_0\": 4063.0796648426235,\n      \"key_1\": 710\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 4813,\n  \"created_at\": \"1990-02-02T03:34:26.279Z\",\n  \"updated_at\": \"2020-02-15T05:12:04.770Z\",\n  \"name\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"description\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"handle\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"published\": \"<boolean>\",\n  \"free_shipping\": \"<boolean>\",\n  \"categories\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"variants\": [\n    {\n      \"price\": \"<string>\",\n      \"promotional_price\": \"<string>\",\n      \"stock\": \"<integer>\",\n      \"stock_management\": \"<boolean>\",\n      \"sku\": \"<string>\",\n      \"weight\": \"<string>\",\n      \"values\": [\n        {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        },\n        {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        }\n      ],\n      \"key_0\": \"string\"\n    },\n    {\n      \"price\": \"<string>\",\n      \"promotional_price\": \"<string>\",\n      \"stock\": \"<integer>\",\n      \"stock_management\": \"<boolean>\",\n      \"sku\": \"<string>\",\n      \"weight\": \"<string>\",\n      \"values\": [\n        {\n          \"key_0\": \"<string>\"\n        },\n        {\n          \"key_0\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"images\": [\n    {\n      \"src\": \"<uri>\",\n      \"attachment\": \"<string>\",\n      \"filename\": \"<string>\",\n      \"position\": \"<integer>\"\n    },\n    {\n      \"src\": \"<uri>\",\n      \"attachment\": \"<string>\",\n      \"filename\": \"<string>\",\n      \"position\": \"<integer>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b2cf9382-36c3-4cf7-81a4-e03cec6db57f",
+              "name": "Missing or malformed `Authentication` header, or invalid token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\",\n    \"key_4\": \"<string>\"\n  },\n  \"description\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"handle\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\"\n  },\n  \"published\": \"<boolean>\",\n  \"free_shipping\": \"<boolean>\",\n  \"categories\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"variants\": [\n    {\n      \"price\": \"<string>\",\n      \"promotional_price\": \"<string>\",\n      \"stock\": \"<integer>\",\n      \"stock_management\": \"<boolean>\",\n      \"sku\": \"<string>\",\n      \"weight\": \"<string>\",\n      \"values\": [\n        {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        },\n        {\n          \"key_0\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"price\": \"<string>\",\n      \"promotional_price\": \"<string>\",\n      \"stock\": \"<integer>\",\n      \"stock_management\": \"<boolean>\",\n      \"sku\": \"<string>\",\n      \"weight\": \"<string>\",\n      \"values\": [\n        {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\",\n          \"key_3\": \"<string>\"\n        },\n        {\n          \"key_0\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"images\": [\n    {\n      \"src\": \"<uri>\",\n      \"attachment\": \"<string>\",\n      \"filename\": \"<string>\",\n      \"position\": \"<integer>\",\n      \"key_0\": 8371\n    },\n    {\n      \"src\": \"<uri>\",\n      \"attachment\": \"<string>\",\n      \"filename\": \"<string>\",\n      \"position\": \"<integer>\",\n      \"key_0\": 4063.0796648426235,\n      \"key_1\": 710\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6862,\n  \"message\": \"string\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "94bd0568-c00f-4cb3-b1cd-6ff15c60a6e1",
+              "name": "The request payload failed validation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\",\n    \"key_4\": \"<string>\"\n  },\n  \"description\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"handle\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\"\n  },\n  \"published\": \"<boolean>\",\n  \"free_shipping\": \"<boolean>\",\n  \"categories\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"variants\": [\n    {\n      \"price\": \"<string>\",\n      \"promotional_price\": \"<string>\",\n      \"stock\": \"<integer>\",\n      \"stock_management\": \"<boolean>\",\n      \"sku\": \"<string>\",\n      \"weight\": \"<string>\",\n      \"values\": [\n        {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        },\n        {\n          \"key_0\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"price\": \"<string>\",\n      \"promotional_price\": \"<string>\",\n      \"stock\": \"<integer>\",\n      \"stock_management\": \"<boolean>\",\n      \"sku\": \"<string>\",\n      \"weight\": \"<string>\",\n      \"values\": [\n        {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\",\n          \"key_3\": \"<string>\"\n        },\n        {\n          \"key_0\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"images\": [\n    {\n      \"src\": \"<uri>\",\n      \"attachment\": \"<string>\",\n      \"filename\": \"<string>\",\n      \"position\": \"<integer>\",\n      \"key_0\": 8371\n    },\n    {\n      \"src\": \"<uri>\",\n      \"attachment\": \"<string>\",\n      \"filename\": \"<string>\",\n      \"position\": \"<integer>\",\n      \"key_0\": 4063.0796648426235,\n      \"key_1\": 710\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6862,\n  \"message\": \"string\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6ab04511-507b-4dd8-9aa5-842a964e91b5",
+              "name": "Too many requests - the per-store leaky bucket overflowed. Inspect the x-rate-limit-limit, x-rate-limit-remaining, and x-rate-limit-reset headers and back off.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\",\n    \"key_4\": \"<string>\"\n  },\n  \"description\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"handle\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\"\n  },\n  \"published\": \"<boolean>\",\n  \"free_shipping\": \"<boolean>\",\n  \"categories\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"variants\": [\n    {\n      \"price\": \"<string>\",\n      \"promotional_price\": \"<string>\",\n      \"stock\": \"<integer>\",\n      \"stock_management\": \"<boolean>\",\n      \"sku\": \"<string>\",\n      \"weight\": \"<string>\",\n      \"values\": [\n        {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        },\n        {\n          \"key_0\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"price\": \"<string>\",\n      \"promotional_price\": \"<string>\",\n      \"stock\": \"<integer>\",\n      \"stock_management\": \"<boolean>\",\n      \"sku\": \"<string>\",\n      \"weight\": \"<string>\",\n      \"values\": [\n        {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\",\n          \"key_3\": \"<string>\"\n        },\n        {\n          \"key_0\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"images\": [\n    {\n      \"src\": \"<uri>\",\n      \"attachment\": \"<string>\",\n      \"filename\": \"<string>\",\n      \"position\": \"<integer>\",\n      \"key_0\": 8371\n    },\n    {\n      \"src\": \"<uri>\",\n      \"attachment\": \"<string>\",\n      \"filename\": \"<string>\",\n      \"position\": \"<integer>\",\n      \"key_0\": 4063.0796648426235,\n      \"key_1\": 710\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Total requests the bucket can hold.",
+                  "key": "x-rate-limit-limit",
+                  "value": "9790"
+                },
+                {
+                  "disabled": false,
+                  "description": "Remaining capacity before the bucket fills.",
+                  "key": "x-rate-limit-remaining",
+                  "value": "9790"
+                },
+                {
+                  "disabled": false,
+                  "description": "Milliseconds remaining to completely empty the bucket.",
+                  "key": "x-rate-limit-reset",
+                  "value": "9790"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6862,\n  \"message\": \"string\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "69931d8c-939e-4235-a40d-3b3daa1fc94e",
+          "name": "Get a product",
+          "request": {
+            "name": "Get a product",
+            "description": {
+              "content": "Receive a single product by its id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "products",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) The numeric resource id."
+                },
+                {
+                  "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                  "type": "any",
+                  "value": "{{store_id}}",
+                  "key": "store_id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b00d3a0b-1073-47c5-8630-f51cc53b9839",
+              "name": "The requested product.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) The numeric resource id."
+                    },
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 4813,\n  \"created_at\": \"1990-02-02T03:34:26.279Z\",\n  \"updated_at\": \"2020-02-15T05:12:04.770Z\",\n  \"name\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"description\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"handle\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"published\": \"<boolean>\",\n  \"free_shipping\": \"<boolean>\",\n  \"categories\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"variants\": [\n    {\n      \"price\": \"<string>\",\n      \"promotional_price\": \"<string>\",\n      \"stock\": \"<integer>\",\n      \"stock_management\": \"<boolean>\",\n      \"sku\": \"<string>\",\n      \"weight\": \"<string>\",\n      \"values\": [\n        {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        },\n        {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        }\n      ],\n      \"key_0\": \"string\"\n    },\n    {\n      \"price\": \"<string>\",\n      \"promotional_price\": \"<string>\",\n      \"stock\": \"<integer>\",\n      \"stock_management\": \"<boolean>\",\n      \"sku\": \"<string>\",\n      \"weight\": \"<string>\",\n      \"values\": [\n        {\n          \"key_0\": \"<string>\"\n        },\n        {\n          \"key_0\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"images\": [\n    {\n      \"src\": \"<uri>\",\n      \"attachment\": \"<string>\",\n      \"filename\": \"<string>\",\n      \"position\": \"<integer>\"\n    },\n    {\n      \"src\": \"<uri>\",\n      \"attachment\": \"<string>\",\n      \"filename\": \"<string>\",\n      \"position\": \"<integer>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5ebd8d08-bdad-4aaf-a5a8-a095ad0f459b",
+              "name": "Missing or malformed `Authentication` header, or invalid token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) The numeric resource id."
+                    },
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6862,\n  \"message\": \"string\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e89b3030-5138-43d1-a830-84c882acd528",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) The numeric resource id."
+                    },
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6862,\n  \"message\": \"string\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "145024cb-4347-49ff-8ffe-93bafba09be0",
+          "name": "Update a product",
+          "request": {
+            "name": "Update a product",
+            "description": {
+              "content": "Modify an existing product.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "products",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) The numeric resource id."
+                },
+                {
+                  "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                  "type": "any",
+                  "value": "{{store_id}}",
+                  "key": "store_id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"description\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"handle\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"published\": \"<boolean>\",\n  \"free_shipping\": \"<boolean>\",\n  \"categories\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"variants\": [\n    {\n      \"price\": \"<string>\",\n      \"promotional_price\": \"<string>\",\n      \"stock\": \"<integer>\",\n      \"stock_management\": \"<boolean>\",\n      \"sku\": \"<string>\",\n      \"weight\": \"<string>\",\n      \"values\": [\n        {\n          \"key_0\": \"<string>\"\n        },\n        {\n          \"key_0\": \"<string>\"\n        }\n      ],\n      \"key_0\": false,\n      \"key_1\": 8069\n    },\n    {\n      \"price\": \"<string>\",\n      \"promotional_price\": \"<string>\",\n      \"stock\": \"<integer>\",\n      \"stock_management\": \"<boolean>\",\n      \"sku\": \"<string>\",\n      \"weight\": \"<string>\",\n      \"values\": [\n        {\n          \"key_0\": \"<string>\"\n        },\n        {\n          \"key_0\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"images\": [\n    {\n      \"src\": \"<uri>\",\n      \"attachment\": \"<string>\",\n      \"filename\": \"<string>\",\n      \"position\": \"<integer>\",\n      \"key_0\": 1238,\n      \"key_1\": \"string\"\n    },\n    {\n      \"src\": \"<uri>\",\n      \"attachment\": \"<string>\",\n      \"filename\": \"<string>\",\n      \"position\": \"<integer>\"\n    }\n  ],\n  \"key_0\": false,\n  \"key_1\": 4835.334914087649\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6d1778b7-8a06-4de9-a8cf-cd4c71a25fb6",
+              "name": "The updated product.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) The numeric resource id."
+                    },
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\",\n    \"key_4\": \"<string>\"\n  },\n  \"description\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"handle\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\"\n  },\n  \"published\": \"<boolean>\",\n  \"free_shipping\": \"<boolean>\",\n  \"categories\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"variants\": [\n    {\n      \"price\": \"<string>\",\n      \"promotional_price\": \"<string>\",\n      \"stock\": \"<integer>\",\n      \"stock_management\": \"<boolean>\",\n      \"sku\": \"<string>\",\n      \"weight\": \"<string>\",\n      \"values\": [\n        {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        },\n        {\n          \"key_0\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"price\": \"<string>\",\n      \"promotional_price\": \"<string>\",\n      \"stock\": \"<integer>\",\n      \"stock_management\": \"<boolean>\",\n      \"sku\": \"<string>\",\n      \"weight\": \"<string>\",\n      \"values\": [\n        {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\",\n          \"key_3\": \"<string>\"\n        },\n        {\n          \"key_0\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"images\": [\n    {\n      \"src\": \"<uri>\",\n      \"attachment\": \"<string>\",\n      \"filename\": \"<string>\",\n      \"position\": \"<integer>\",\n      \"key_0\": 8371\n    },\n    {\n      \"src\": \"<uri>\",\n      \"attachment\": \"<string>\",\n      \"filename\": \"<string>\",\n      \"position\": \"<integer>\",\n      \"key_0\": 4063.0796648426235,\n      \"key_1\": 710\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 4813,\n  \"created_at\": \"1990-02-02T03:34:26.279Z\",\n  \"updated_at\": \"2020-02-15T05:12:04.770Z\",\n  \"name\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"description\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"handle\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"published\": \"<boolean>\",\n  \"free_shipping\": \"<boolean>\",\n  \"categories\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"variants\": [\n    {\n      \"price\": \"<string>\",\n      \"promotional_price\": \"<string>\",\n      \"stock\": \"<integer>\",\n      \"stock_management\": \"<boolean>\",\n      \"sku\": \"<string>\",\n      \"weight\": \"<string>\",\n      \"values\": [\n        {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        },\n        {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        }\n      ],\n      \"key_0\": \"string\"\n    },\n    {\n      \"price\": \"<string>\",\n      \"promotional_price\": \"<string>\",\n      \"stock\": \"<integer>\",\n      \"stock_management\": \"<boolean>\",\n      \"sku\": \"<string>\",\n      \"weight\": \"<string>\",\n      \"values\": [\n        {\n          \"key_0\": \"<string>\"\n        },\n        {\n          \"key_0\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"images\": [\n    {\n      \"src\": \"<uri>\",\n      \"attachment\": \"<string>\",\n      \"filename\": \"<string>\",\n      \"position\": \"<integer>\"\n    },\n    {\n      \"src\": \"<uri>\",\n      \"attachment\": \"<string>\",\n      \"filename\": \"<string>\",\n      \"position\": \"<integer>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "87c725d6-bf62-4f46-a0aa-de0bee530e01",
+              "name": "Missing or malformed `Authentication` header, or invalid token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) The numeric resource id."
+                    },
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\",\n    \"key_4\": \"<string>\"\n  },\n  \"description\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"handle\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\"\n  },\n  \"published\": \"<boolean>\",\n  \"free_shipping\": \"<boolean>\",\n  \"categories\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"variants\": [\n    {\n      \"price\": \"<string>\",\n      \"promotional_price\": \"<string>\",\n      \"stock\": \"<integer>\",\n      \"stock_management\": \"<boolean>\",\n      \"sku\": \"<string>\",\n      \"weight\": \"<string>\",\n      \"values\": [\n        {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        },\n        {\n          \"key_0\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"price\": \"<string>\",\n      \"promotional_price\": \"<string>\",\n      \"stock\": \"<integer>\",\n      \"stock_management\": \"<boolean>\",\n      \"sku\": \"<string>\",\n      \"weight\": \"<string>\",\n      \"values\": [\n        {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\",\n          \"key_3\": \"<string>\"\n        },\n        {\n          \"key_0\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"images\": [\n    {\n      \"src\": \"<uri>\",\n      \"attachment\": \"<string>\",\n      \"filename\": \"<string>\",\n      \"position\": \"<integer>\",\n      \"key_0\": 8371\n    },\n    {\n      \"src\": \"<uri>\",\n      \"attachment\": \"<string>\",\n      \"filename\": \"<string>\",\n      \"position\": \"<integer>\",\n      \"key_0\": 4063.0796648426235,\n      \"key_1\": 710\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6862,\n  \"message\": \"string\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0c157015-c1f3-4475-98cb-e96b3487f727",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) The numeric resource id."
+                    },
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\",\n    \"key_4\": \"<string>\"\n  },\n  \"description\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"handle\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\"\n  },\n  \"published\": \"<boolean>\",\n  \"free_shipping\": \"<boolean>\",\n  \"categories\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"variants\": [\n    {\n      \"price\": \"<string>\",\n      \"promotional_price\": \"<string>\",\n      \"stock\": \"<integer>\",\n      \"stock_management\": \"<boolean>\",\n      \"sku\": \"<string>\",\n      \"weight\": \"<string>\",\n      \"values\": [\n        {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        },\n        {\n          \"key_0\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"price\": \"<string>\",\n      \"promotional_price\": \"<string>\",\n      \"stock\": \"<integer>\",\n      \"stock_management\": \"<boolean>\",\n      \"sku\": \"<string>\",\n      \"weight\": \"<string>\",\n      \"values\": [\n        {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\",\n          \"key_3\": \"<string>\"\n        },\n        {\n          \"key_0\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"images\": [\n    {\n      \"src\": \"<uri>\",\n      \"attachment\": \"<string>\",\n      \"filename\": \"<string>\",\n      \"position\": \"<integer>\",\n      \"key_0\": 8371\n    },\n    {\n      \"src\": \"<uri>\",\n      \"attachment\": \"<string>\",\n      \"filename\": \"<string>\",\n      \"position\": \"<integer>\",\n      \"key_0\": 4063.0796648426235,\n      \"key_1\": 710\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6862,\n  \"message\": \"string\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b5aa9c42-f564-4e26-9c79-963644462d0f",
+              "name": "The request payload failed validation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) The numeric resource id."
+                    },
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\",\n    \"key_4\": \"<string>\"\n  },\n  \"description\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"handle\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\"\n  },\n  \"published\": \"<boolean>\",\n  \"free_shipping\": \"<boolean>\",\n  \"categories\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"variants\": [\n    {\n      \"price\": \"<string>\",\n      \"promotional_price\": \"<string>\",\n      \"stock\": \"<integer>\",\n      \"stock_management\": \"<boolean>\",\n      \"sku\": \"<string>\",\n      \"weight\": \"<string>\",\n      \"values\": [\n        {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        },\n        {\n          \"key_0\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"price\": \"<string>\",\n      \"promotional_price\": \"<string>\",\n      \"stock\": \"<integer>\",\n      \"stock_management\": \"<boolean>\",\n      \"sku\": \"<string>\",\n      \"weight\": \"<string>\",\n      \"values\": [\n        {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\",\n          \"key_3\": \"<string>\"\n        },\n        {\n          \"key_0\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"images\": [\n    {\n      \"src\": \"<uri>\",\n      \"attachment\": \"<string>\",\n      \"filename\": \"<string>\",\n      \"position\": \"<integer>\",\n      \"key_0\": 8371\n    },\n    {\n      \"src\": \"<uri>\",\n      \"attachment\": \"<string>\",\n      \"filename\": \"<string>\",\n      \"position\": \"<integer>\",\n      \"key_0\": 4063.0796648426235,\n      \"key_1\": 710\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6862,\n  \"message\": \"string\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5100088b-cc58-40cc-816d-6e1b019dc1ce",
+          "name": "Delete a product",
+          "request": {
+            "name": "Delete a product",
+            "description": {
+              "content": "Remove a product from the store.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "products",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) The numeric resource id."
+                },
+                {
+                  "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                  "type": "any",
+                  "value": "{{store_id}}",
+                  "key": "store_id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "84ccf328-071e-464f-8fac-b8952672dc10",
+              "name": "Deletion confirmation (empty object).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) The numeric resource id."
+                    },
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c59c3c75-a1dc-44ad-89d1-deca27150706",
+              "name": "Missing or malformed `Authentication` header, or invalid token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) The numeric resource id."
+                    },
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6862,\n  \"message\": \"string\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7979e0b5-84f1-4cf4-8bc8-07803bb731cc",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) The numeric resource id."
+                    },
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6862,\n  \"message\": \"string\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bf36a070-81fd-42a5-821a-4e524a206728",
+          "name": "Get a product by variant SKU",
+          "request": {
+            "name": "Get a product by variant SKU",
+            "description": {
+              "content": "Receive the product that owns the variant with the given SKU.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "products",
+                "sku",
+                ":sku"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sku",
+                  "description": "(Required) The SKU of a product variant."
+                },
+                {
+                  "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                  "type": "any",
+                  "value": "{{store_id}}",
+                  "key": "store_id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "577703fd-d4e2-4f58-bb5c-8f930e94324a",
+              "name": "The requested product.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    "sku",
+                    ":sku"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sku",
+                      "description": "(Required) The SKU of a product variant."
+                    },
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 4813,\n  \"created_at\": \"1990-02-02T03:34:26.279Z\",\n  \"updated_at\": \"2020-02-15T05:12:04.770Z\",\n  \"name\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"description\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"handle\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"published\": \"<boolean>\",\n  \"free_shipping\": \"<boolean>\",\n  \"categories\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"variants\": [\n    {\n      \"price\": \"<string>\",\n      \"promotional_price\": \"<string>\",\n      \"stock\": \"<integer>\",\n      \"stock_management\": \"<boolean>\",\n      \"sku\": \"<string>\",\n      \"weight\": \"<string>\",\n      \"values\": [\n        {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        },\n        {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        }\n      ],\n      \"key_0\": \"string\"\n    },\n    {\n      \"price\": \"<string>\",\n      \"promotional_price\": \"<string>\",\n      \"stock\": \"<integer>\",\n      \"stock_management\": \"<boolean>\",\n      \"sku\": \"<string>\",\n      \"weight\": \"<string>\",\n      \"values\": [\n        {\n          \"key_0\": \"<string>\"\n        },\n        {\n          \"key_0\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"images\": [\n    {\n      \"src\": \"<uri>\",\n      \"attachment\": \"<string>\",\n      \"filename\": \"<string>\",\n      \"position\": \"<integer>\"\n    },\n    {\n      \"src\": \"<uri>\",\n      \"attachment\": \"<string>\",\n      \"filename\": \"<string>\",\n      \"position\": \"<integer>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "af36c4c7-2bed-4444-9927-c849ef06dec3",
+              "name": "Missing or malformed `Authentication` header, or invalid token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    "sku",
+                    ":sku"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sku",
+                      "description": "(Required) The SKU of a product variant."
+                    },
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6862,\n  \"message\": \"string\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1021664a-ec17-4290-b4f9-5b15555fdd6f",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    "sku",
+                    ":sku"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sku",
+                      "description": "(Required) The SKU of a product variant."
+                    },
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6862,\n  \"message\": \"string\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2f931ade-3268-4b5e-a5d8-dc3766c9303c",
+          "name": "Bulk update stock and price",
+          "request": {
+            "name": "Bulk update stock and price",
+            "description": {
+              "content": "Update stock and/or price for multiple products and variants in one request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "products",
+                "stock-price"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                  "type": "any",
+                  "value": "{{store_id}}",
+                  "key": "store_id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  \"<object>\",\n  \"<object>\"\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6b85ef72-040f-447b-aacd-ba6f5b293581",
+              "name": "Bulk update result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    "stock-price"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"<object>\",\n  \"<object>\"\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "495ba3d7-9c41-4947-b578-d08e96cd1c39",
+              "name": "Missing or malformed `Authentication` header, or invalid token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    "stock-price"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"<object>\",\n  \"<object>\"\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6862,\n  \"message\": \"string\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9efa5db9-897d-4f51-9795-572ef91a4466",
+              "name": "The request payload failed validation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    "stock-price"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The numeric store id (user_id) returned during OAuth authorization.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"<object>\",\n  \"<object>\"\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6862,\n  \"message\": \"string\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The numeric store id (user_id) returned during OAuth authorization.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "0",
+      "key": "store_id"
+    },
+    {
+      "type": "string",
+      "value": "https://api.tiendanube.com/2025-03/{{store_id}}",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authentication"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c4cad961-f4eb-495c-8f6e-7df425d60bcb",
+    "name": "Nuvemshop / Tiendanube Admin Categories Products API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Store-scoped REST Admin API for the Nuvemshop (Tiendanube) e-commerce platform. This document models a grounded, representative subset of the public API - products, product variants, product images, categories, orders, customers, coupons, webhooks, scripts, and store - as documented at https://tiendanube.github.io/api-documentation/.\n\nEvery path is relative to a per-store base that embeds the store id, for example `https://api.tiendanube.com/2025-03/{store_id}`. The Brazilian mirror `https://api.nuvemshop.com.br/2025-03/{store_id}` serves the same API, and the long-standing `v1` path (`https://api.tiendanube.com/v1/{store_id}`) remains available as the legacy equivalent.\n\nAuthentication is OAuth 2 (authorization code grant). The resulting non-expiring access token is sent in a NON-STANDARD header named `Authentication` with a lowercase `bearer` prefix (`Authentication: bearer ACCESS_TOKEN`) - using `Authorization` or a different case returns 401. Every request must also send a descriptive `User-Agent` header identifying the app and a contact (name/email or URL); omitting it returns 400.\n\nNOTE ON MODELING: endpoint paths, methods, and the auth/header/rate-limit behavior below are grounded in the live documentation. Request and response body schemas are simplified representative models (marked with additionalProperties) rather than the provider's full field-level schema.\n\nContact Support:\n Name: Nuvemshop / Tiendanube Developers",
+      "type": "text/plain"
+    }
+  }
+}

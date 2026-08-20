@@ -27,6 +27,18 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/nuvemshop.png
 tags:
+- E-Commerce
+- Online Store
+- Latin America
+- Brazil
+- Argentina
+- Storefront
+- Product
+- Order
+- Merchants
+- Webhook
+- Software-as-a-Service
+tags_raw:
 - E-commerce
 - Online Store
 - Latin America
@@ -156,6 +168,8 @@ apis:
   humanURL: https://tiendanube.github.io/api-documentation/resources/product
   baseURL: https://api.tiendanube.com/2025-03/{store_id}
   tags:
+  - Order
+  tags_raw:
   - Orders
   properties:
   - type: OpenAPI
@@ -264,6 +278,8 @@ apis:
   humanURL: https://tiendanube.github.io/api-documentation/resources/product
   baseURL: https://api.tiendanube.com/2025-03/{store_id}
   tags:
+  - Product
+  tags_raw:
   - Products
   properties:
   - type: OpenAPI
@@ -372,6 +388,8 @@ apis:
   humanURL: https://tiendanube.github.io/api-documentation/resources/product
   baseURL: https://api.tiendanube.com/2025-03/{store_id}
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI

@@ -12,6 +12,18 @@ description: Nuvemshop (Tiendanube in Spanish-speaking markets) is the leading L
   prefix) along with a required `User-Agent`. The API is store-scoped - every
   path is prefixed with the
   store id - and is rate limited with a per-store leaky bucket.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve

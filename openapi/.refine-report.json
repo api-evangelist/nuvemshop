@@ -1,16 +1,7 @@
 {
   "provider": "nuvemshop",
   "sources": [
-    "nuvemshop-categories-api-openapi.yml",
-    "nuvemshop-coupons-api-openapi.yml",
-    "nuvemshop-customers-api-openapi.yml",
-    "nuvemshop-orders-api-openapi.yml",
-    "nuvemshop-product-images-api-openapi.yml",
-    "nuvemshop-product-variants-api-openapi.yml",
-    "nuvemshop-products-api-openapi.yml",
-    "nuvemshop-scripts-api-openapi.yml",
-    "nuvemshop-store-api-openapi.yml",
-    "nuvemshop-webhooks-api-openapi.yml"
+    "_original/nuvemshop-openapi.yml"
   ],
   "outputs": [
     "nuvemshop-categories-api-openapi.yml",
@@ -27,6 +18,21 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "nuvemshop-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "nuvemshop-categories-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nuvemshop-coupons-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nuvemshop-customers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nuvemshop-orders-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nuvemshop-product-images-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nuvemshop-product-variants-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nuvemshop-products-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nuvemshop-scripts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nuvemshop-store-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nuvemshop-webhooks-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

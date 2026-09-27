@@ -137,37 +137,19 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     ValidationError:
       description: The request payload failed validation.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    Error:
-      type: object
-      properties:
-        code:
-          type: integer
-        message:
-          type: string
-        description:
-          type: string
-      additionalProperties: true
-    Coupon:
-      allOf:
-      - type: object
-        properties:
-          id:
-            type: integer
-            format: int64
-      - $ref: '#/components/schemas/CouponInput'
     CouponInput:
       type: object
       properties:
@@ -198,6 +180,24 @@ components:
           type: string
           format: date
       additionalProperties: true
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        description:
+          type: string
+      additionalProperties: true
+    Coupon:
+      allOf:
+      - type: object
+        properties:
+          id:
+            type: integer
+            format: int64
+      - $ref: '#/components/schemas/CouponInput'
   parameters:
     Id:
       name: id

@@ -208,25 +208,6 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    Unauthorized:
-      description: Missing or malformed `Authentication` header, or invalid token.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    ValidationError:
-      description: The request payload failed validation.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
     LocalizedString:
       type: object
@@ -278,20 +259,39 @@ components:
           items:
             $ref: '#/components/schemas/LocalizedString'
       additionalProperties: true
+  responses:
+    Unauthorized:
+      description: Missing or malformed `Authentication` header, or invalid token.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ValidationError:
+      description: The request payload failed validation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   parameters:
-    ProductId:
-      name: product_id
-      in: path
-      required: true
-      description: The numeric product id.
-      schema:
-        type: integer
-        format: int64
     Id:
       name: id
       in: path
       required: true
       description: The numeric resource id.
+      schema:
+        type: integer
+        format: int64
+    ProductId:
+      name: product_id
+      in: path
+      required: true
+      description: The numeric product id.
       schema:
         type: integer
         format: int64

@@ -133,15 +133,35 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  parameters:
+    PerPage:
+      name: per_page
+      in: query
+      required: false
+      description: Results per page (max 200).
+      schema:
+        type: integer
+        default: 30
+        maximum: 200
+    Id:
+      name: id
+      in: path
+      required: true
+      description: The numeric resource id.
+      schema:
+        type: integer
+        format: int64
+    Page:
+      name: page
+      in: query
+      required: false
+      description: Page number for pagination.
+      schema:
+        type: integer
+        default: 1
   responses:
     Unauthorized:
       description: Missing or malformed `Authentication` header, or invalid token.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The requested resource was not found.
       content:
         application/json:
           schema:
@@ -152,7 +172,23 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        description:
+          type: string
+      additionalProperties: true
     CustomerInput:
       type: object
       properties:
@@ -173,16 +209,6 @@ components:
             type: object
             additionalProperties: true
       additionalProperties: true
-    Error:
-      type: object
-      properties:
-        code:
-          type: integer
-        message:
-          type: string
-        description:
-          type: string
-      additionalProperties: true
     Customer:
       allOf:
       - type: object
@@ -194,32 +220,6 @@ components:
             type: string
             format: date-time
       - $ref: '#/components/schemas/CustomerInput'
-  parameters:
-    Page:
-      name: page
-      in: query
-      required: false
-      description: Page number for pagination.
-      schema:
-        type: integer
-        default: 1
-    PerPage:
-      name: per_page
-      in: query
-      required: false
-      description: Results per page (max 200).
-      schema:
-        type: integer
-        default: 30
-        maximum: 200
-    Id:
-      name: id
-      in: path
-      required: true
-      description: The numeric resource id.
-      schema:
-        type: integer
-        format: int64
   securitySchemes:
     authenticationHeader:
       type: apiKey

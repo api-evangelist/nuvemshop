@@ -203,75 +203,38 @@ paths:
         '422':
           $ref: '#/components/responses/ValidationError'
 components:
-  responses:
-    RateLimited:
-      description: Too many requests - the per-store leaky bucket overflowed. Inspect the x-rate-limit-limit, x-rate-limit-remaining, and x-rate-limit-reset headers and back off.
-      headers:
-        x-rate-limit-limit:
-          schema:
-            type: integer
-          description: Total requests the bucket can hold.
-        x-rate-limit-remaining:
-          schema:
-            type: integer
-          description: Remaining capacity before the bucket fills.
-        x-rate-limit-reset:
-          schema:
-            type: integer
-          description: Milliseconds remaining to completely empty the bucket.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Missing or malformed `Authentication` header, or invalid token.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    ValidationError:
-      description: The request payload failed validation.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+  parameters:
+    PerPage:
+      name: per_page
+      in: query
+      required: false
+      description: Results per page (max 200).
+      schema:
+        type: integer
+        default: 30
+        maximum: 200
+    Id:
+      name: id
+      in: path
+      required: true
+      description: The numeric resource id.
+      schema:
+        type: integer
+        format: int64
+    Page:
+      name: page
+      in: query
+      required: false
+      description: Page number for pagination.
+      schema:
+        type: integer
+        default: 1
   schemas:
     LocalizedString:
       type: object
       description: A map of language code to localized text (e.g. {"es":"...","pt":"..."}).
       additionalProperties:
         type: string
-    Error:
-      type: object
-      properties:
-        code:
-          type: integer
-        message:
-          type: string
-        description:
-          type: string
-      additionalProperties: true
-    ImageInput:
-      type: object
-      properties:
-        src:
-          type: string
-          format: uri
-          description: Public URL of the image to import.
-        attachment:
-          type: string
-          description: Base64-encoded image data (alternative to src).
-        filename:
-          type: string
-        position:
-          type: integer
-      additionalProperties: true
     Product:
       allOf:
       - type: object
@@ -286,29 +249,15 @@ components:
             type: string
             format: date-time
       - $ref: '#/components/schemas/ProductInput'
-    VariantInput:
+    Error:
       type: object
       properties:
-        price:
+        code:
+          type: integer
+        message:
           type: string
-        promotional_price:
+        description:
           type: string
-        stock:
-          type:
-          - integer
-          - 'null'
-        stock_management:
-          type: boolean
-        sku:
-          type:
-          - string
-          - 'null'
-        weight:
-          type: string
-        values:
-          type: array
-          items:
-            $ref: '#/components/schemas/LocalizedString'
       additionalProperties: true
     ProductInput:
       type: object
@@ -336,32 +285,83 @@ components:
           items:
             $ref: '#/components/schemas/ImageInput'
       additionalProperties: true
-  parameters:
-    Page:
-      name: page
-      in: query
-      required: false
-      description: Page number for pagination.
-      schema:
-        type: integer
-        default: 1
-    PerPage:
-      name: per_page
-      in: query
-      required: false
-      description: Results per page (max 200).
-      schema:
-        type: integer
-        default: 30
-        maximum: 200
-    Id:
-      name: id
-      in: path
-      required: true
-      description: The numeric resource id.
-      schema:
-        type: integer
-        format: int64
+    ImageInput:
+      type: object
+      properties:
+        src:
+          type: string
+          format: uri
+          description: Public URL of the image to import.
+        attachment:
+          type: string
+          description: Base64-encoded image data (alternative to src).
+        filename:
+          type: string
+        position:
+          type: integer
+      additionalProperties: true
+    VariantInput:
+      type: object
+      properties:
+        price:
+          type: string
+        promotional_price:
+          type: string
+        stock:
+          type:
+          - integer
+          - 'null'
+        stock_management:
+          type: boolean
+        sku:
+          type:
+          - string
+          - 'null'
+        weight:
+          type: string
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/LocalizedString'
+      additionalProperties: true
+  responses:
+    Unauthorized:
+      description: Missing or malformed `Authentication` header, or invalid token.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ValidationError:
+      description: The request payload failed validation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    RateLimited:
+      description: Too many requests - the per-store leaky bucket overflowed. Inspect the x-rate-limit-limit, x-rate-limit-remaining, and x-rate-limit-reset headers and back off.
+      headers:
+        x-rate-limit-limit:
+          schema:
+            type: integer
+          description: Total requests the bucket can hold.
+        x-rate-limit-remaining:
+          schema:
+            type: integer
+          description: Remaining capacity before the bucket fills.
+        x-rate-limit-reset:
+          schema:
+            type: integer
+          description: Milliseconds remaining to completely empty the bucket.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     authenticationHeader:
       type: apiKey

@@ -140,14 +140,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The requested resource was not found.
+    ValidationError:
+      description: The request payload failed validation.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    ValidationError:
-      description: The request payload failed validation.
+    NotFound:
+      description: The requested resource was not found.
       content:
         application/json:
           schema:
@@ -163,6 +163,20 @@ components:
         description:
           type: string
       additionalProperties: true
+    Image:
+      allOf:
+      - type: object
+        properties:
+          id:
+            type: integer
+            format: int64
+          product_id:
+            type: integer
+            format: int64
+          src:
+            type: string
+            format: uri
+      - $ref: '#/components/schemas/ImageInput'
     ImageInput:
       type: object
       properties:
@@ -178,34 +192,20 @@ components:
         position:
           type: integer
       additionalProperties: true
-    Image:
-      allOf:
-      - type: object
-        properties:
-          id:
-            type: integer
-            format: int64
-          product_id:
-            type: integer
-            format: int64
-          src:
-            type: string
-            format: uri
-      - $ref: '#/components/schemas/ImageInput'
   parameters:
-    ProductId:
-      name: product_id
-      in: path
-      required: true
-      description: The numeric product id.
-      schema:
-        type: integer
-        format: int64
     Id:
       name: id
       in: path
       required: true
       description: The numeric resource id.
+      schema:
+        type: integer
+        format: int64
+    ProductId:
+      name: product_id
+      in: path
+      required: true
+      description: The numeric product id.
       schema:
         type: integer
         format: int64

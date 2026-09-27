@@ -131,14 +131,6 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
-    Category:
-      allOf:
-      - type: object
-        properties:
-          id:
-            type: integer
-            format: int64
-      - $ref: '#/components/schemas/CategoryInput'
     LocalizedString:
       type: object
       description: A map of language code to localized text (e.g. {"es":"...","pt":"..."}).
@@ -154,6 +146,14 @@ components:
         description:
           type: string
       additionalProperties: true
+    Category:
+      allOf:
+      - type: object
+        properties:
+          id:
+            type: integer
+            format: int64
+      - $ref: '#/components/schemas/CategoryInput'
     CategoryInput:
       type: object
       properties:
@@ -175,14 +175,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The requested resource was not found.
+    ValidationError:
+      description: The request payload failed validation.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    ValidationError:
-      description: The request payload failed validation.
+    NotFound:
+      description: The requested resource was not found.
       content:
         application/json:
           schema:

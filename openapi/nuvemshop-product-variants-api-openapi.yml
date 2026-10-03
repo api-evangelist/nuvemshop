@@ -209,6 +209,30 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
+    VariantInput:
+      type: object
+      properties:
+        price:
+          type: string
+        promotional_price:
+          type: string
+        stock:
+          type:
+          - integer
+          - 'null'
+        stock_management:
+          type: boolean
+        sku:
+          type:
+          - string
+          - 'null'
+        weight:
+          type: string
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/LocalizedString'
+      additionalProperties: true
     LocalizedString:
       type: object
       description: A map of language code to localized text (e.g. {"es":"...","pt":"..."}).
@@ -235,31 +259,13 @@ components:
             type: integer
             format: int64
       - $ref: '#/components/schemas/VariantInput'
-    VariantInput:
-      type: object
-      properties:
-        price:
-          type: string
-        promotional_price:
-          type: string
-        stock:
-          type:
-          - integer
-          - 'null'
-        stock_management:
-          type: boolean
-        sku:
-          type:
-          - string
-          - 'null'
-        weight:
-          type: string
-        values:
-          type: array
-          items:
-            $ref: '#/components/schemas/LocalizedString'
-      additionalProperties: true
   responses:
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
     Unauthorized:
       description: Missing or malformed `Authentication` header, or invalid token.
       content:
@@ -272,26 +278,20 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   parameters:
-    Id:
-      name: id
-      in: path
-      required: true
-      description: The numeric resource id.
-      schema:
-        type: integer
-        format: int64
     ProductId:
       name: product_id
       in: path
       required: true
       description: The numeric product id.
+      schema:
+        type: integer
+        format: int64
+    Id:
+      name: id
+      in: path
+      required: true
+      description: The numeric resource id.
       schema:
         type: integer
         format: int64

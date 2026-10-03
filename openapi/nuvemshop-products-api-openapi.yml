@@ -203,38 +203,31 @@ paths:
         '422':
           $ref: '#/components/responses/ValidationError'
 components:
-  parameters:
-    PerPage:
-      name: per_page
-      in: query
-      required: false
-      description: Results per page (max 200).
-      schema:
-        type: integer
-        default: 30
-        maximum: 200
-    Id:
-      name: id
-      in: path
-      required: true
-      description: The numeric resource id.
-      schema:
-        type: integer
-        format: int64
-    Page:
-      name: page
-      in: query
-      required: false
-      description: Page number for pagination.
-      schema:
-        type: integer
-        default: 1
   schemas:
-    LocalizedString:
+    VariantInput:
       type: object
-      description: A map of language code to localized text (e.g. {"es":"...","pt":"..."}).
-      additionalProperties:
-        type: string
+      properties:
+        price:
+          type: string
+        promotional_price:
+          type: string
+        stock:
+          type:
+          - integer
+          - 'null'
+        stock_management:
+          type: boolean
+        sku:
+          type:
+          - string
+          - 'null'
+        weight:
+          type: string
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/LocalizedString'
+      additionalProperties: true
     Product:
       allOf:
       - type: object
@@ -249,16 +242,6 @@ components:
             type: string
             format: date-time
       - $ref: '#/components/schemas/ProductInput'
-    Error:
-      type: object
-      properties:
-        code:
-          type: integer
-        message:
-          type: string
-        description:
-          type: string
-      additionalProperties: true
     ProductInput:
       type: object
       properties:
@@ -285,6 +268,16 @@ components:
           items:
             $ref: '#/components/schemas/ImageInput'
       additionalProperties: true
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        description:
+          type: string
+      additionalProperties: true
     ImageInput:
       type: object
       properties:
@@ -300,39 +293,40 @@ components:
         position:
           type: integer
       additionalProperties: true
-    VariantInput:
+    LocalizedString:
       type: object
-      properties:
-        price:
-          type: string
-        promotional_price:
-          type: string
-        stock:
-          type:
-          - integer
-          - 'null'
-        stock_management:
-          type: boolean
-        sku:
-          type:
-          - string
-          - 'null'
-        weight:
-          type: string
-        values:
-          type: array
-          items:
-            $ref: '#/components/schemas/LocalizedString'
-      additionalProperties: true
+      description: A map of language code to localized text (e.g. {"es":"...","pt":"..."}).
+      additionalProperties:
+        type: string
+  parameters:
+    Page:
+      name: page
+      in: query
+      required: false
+      description: Page number for pagination.
+      schema:
+        type: integer
+        default: 1
+    PerPage:
+      name: per_page
+      in: query
+      required: false
+      description: Results per page (max 200).
+      schema:
+        type: integer
+        default: 30
+        maximum: 200
+    Id:
+      name: id
+      in: path
+      required: true
+      description: The numeric resource id.
+      schema:
+        type: integer
+        format: int64
   responses:
-    Unauthorized:
-      description: Missing or malformed `Authentication` header, or invalid token.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    ValidationError:
-      description: The request payload failed validation.
+    NotFound:
+      description: The requested resource was not found.
       content:
         application/json:
           schema:
@@ -356,8 +350,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The requested resource was not found.
+    Unauthorized:
+      description: Missing or malformed `Authentication` header, or invalid token.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ValidationError:
+      description: The request payload failed validation.
       content:
         application/json:
           schema:

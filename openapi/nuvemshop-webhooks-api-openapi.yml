@@ -131,6 +131,21 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
+    WebhookInput:
+      type: object
+      required:
+      - url
+      - event
+      properties:
+        url:
+          type: string
+          format: uri
+          description: HTTPS endpoint that will receive the event POST.
+        event:
+          type: string
+          description: The event to subscribe to, e.g. order/created.
+          example: order/created
+      additionalProperties: true
     Webhook:
       allOf:
       - type: object
@@ -152,22 +167,13 @@ components:
         description:
           type: string
       additionalProperties: true
-    WebhookInput:
-      type: object
-      required:
-      - url
-      - event
-      properties:
-        url:
-          type: string
-          format: uri
-          description: HTTPS endpoint that will receive the event POST.
-        event:
-          type: string
-          description: The event to subscribe to, e.g. order/created.
-          example: order/created
-      additionalProperties: true
   responses:
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
     Unauthorized:
       description: Missing or malformed `Authentication` header, or invalid token.
       content:
@@ -176,12 +182,6 @@ components:
             $ref: '#/components/schemas/Error'
     ValidationError:
       description: The request payload failed validation.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The requested resource was not found.
       content:
         application/json:
           schema:

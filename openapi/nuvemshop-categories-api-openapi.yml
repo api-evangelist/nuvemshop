@@ -130,30 +130,26 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  responses:
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Missing or malformed `Authentication` header, or invalid token.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ValidationError:
+      description: The request payload failed validation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    LocalizedString:
-      type: object
-      description: A map of language code to localized text (e.g. {"es":"...","pt":"..."}).
-      additionalProperties:
-        type: string
-    Error:
-      type: object
-      properties:
-        code:
-          type: integer
-        message:
-          type: string
-        description:
-          type: string
-      additionalProperties: true
-    Category:
-      allOf:
-      - type: object
-        properties:
-          id:
-            type: integer
-            format: int64
-      - $ref: '#/components/schemas/CategoryInput'
     CategoryInput:
       type: object
       properties:
@@ -168,25 +164,29 @@ components:
           - integer
           - 'null'
       additionalProperties: true
-  responses:
-    Unauthorized:
-      description: Missing or malformed `Authentication` header, or invalid token.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    ValidationError:
-      description: The request payload failed validation.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        description:
+          type: string
+      additionalProperties: true
+    LocalizedString:
+      type: object
+      description: A map of language code to localized text (e.g. {"es":"...","pt":"..."}).
+      additionalProperties:
+        type: string
+    Category:
+      allOf:
+      - type: object
+        properties:
+          id:
+            type: integer
+            format: int64
+      - $ref: '#/components/schemas/CategoryInput'
   parameters:
     Id:
       name: id

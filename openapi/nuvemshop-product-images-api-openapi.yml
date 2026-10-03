@@ -133,36 +133,7 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    Unauthorized:
-      description: Missing or malformed `Authentication` header, or invalid token.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    ValidationError:
-      description: The request payload failed validation.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
-    Error:
-      type: object
-      properties:
-        code:
-          type: integer
-        message:
-          type: string
-        description:
-          type: string
-      additionalProperties: true
     Image:
       allOf:
       - type: object
@@ -177,6 +148,16 @@ components:
             type: string
             format: uri
       - $ref: '#/components/schemas/ImageInput'
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        description:
+          type: string
+      additionalProperties: true
     ImageInput:
       type: object
       properties:
@@ -192,20 +173,39 @@ components:
         position:
           type: integer
       additionalProperties: true
+  responses:
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Missing or malformed `Authentication` header, or invalid token.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ValidationError:
+      description: The request payload failed validation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   parameters:
-    Id:
-      name: id
-      in: path
-      required: true
-      description: The numeric resource id.
-      schema:
-        type: integer
-        format: int64
     ProductId:
       name: product_id
       in: path
       required: true
       description: The numeric product id.
+      schema:
+        type: integer
+        format: int64
+    Id:
+      name: id
+      in: path
+      required: true
+      description: The numeric resource id.
       schema:
         type: integer
         format: int64

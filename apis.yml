@@ -433,6 +433,9 @@ apis:
   - type: Documentation
     url: https://tiendanube.github.io/api-documentation/resources/store
 common:
+- type: CapabilityMap
+  url: capabilities/nuvemshop-capability-edges.yml
+  name: Nuvemshop / Tiendanube Business Capability Map
 - type: AgenticAccess
   url: agentic-access/nuvemshop-agentic-access.yml
 - type: DomainSecurity

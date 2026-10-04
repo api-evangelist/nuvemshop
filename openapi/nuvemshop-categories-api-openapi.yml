@@ -130,26 +130,20 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Missing or malformed `Authentication` header, or invalid token.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    ValidationError:
-      description: The request payload failed validation.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
+    Category:
+      allOf:
+      - type: object
+        properties:
+          id:
+            type: integer
+            format: int64
+      - $ref: '#/components/schemas/CategoryInput'
+    LocalizedString:
+      type: object
+      description: A map of language code to localized text (e.g. {"es":"...","pt":"..."}).
+      additionalProperties:
+        type: string
     CategoryInput:
       type: object
       properties:
@@ -174,19 +168,25 @@ components:
         description:
           type: string
       additionalProperties: true
-    LocalizedString:
-      type: object
-      description: A map of language code to localized text (e.g. {"es":"...","pt":"..."}).
-      additionalProperties:
-        type: string
-    Category:
-      allOf:
-      - type: object
-        properties:
-          id:
-            type: integer
-            format: int64
-      - $ref: '#/components/schemas/CategoryInput'
+  responses:
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Missing or malformed `Authentication` header, or invalid token.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ValidationError:
+      description: The request payload failed validation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   parameters:
     Id:
       name: id

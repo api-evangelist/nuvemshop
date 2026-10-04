@@ -130,25 +130,6 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Missing or malformed `Authentication` header, or invalid token.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    ValidationError:
-      description: The request payload failed validation.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
     CouponInput:
       type: object
@@ -180,6 +161,14 @@ components:
           type: string
           format: date
       additionalProperties: true
+    Coupon:
+      allOf:
+      - type: object
+        properties:
+          id:
+            type: integer
+            format: int64
+      - $ref: '#/components/schemas/CouponInput'
     Error:
       type: object
       properties:
@@ -190,14 +179,25 @@ components:
         description:
           type: string
       additionalProperties: true
-    Coupon:
-      allOf:
-      - type: object
-        properties:
-          id:
-            type: integer
-            format: int64
-      - $ref: '#/components/schemas/CouponInput'
+  responses:
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ValidationError:
+      description: The request payload failed validation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Missing or malformed `Authentication` header, or invalid token.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   parameters:
     Id:
       name: id

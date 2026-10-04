@@ -251,6 +251,37 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
+    Customer:
+      allOf:
+      - type: object
+        properties:
+          id:
+            type: integer
+            format: int64
+          created_at:
+            type: string
+            format: date-time
+      - $ref: '#/components/schemas/CustomerInput'
+    CustomerInput:
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        phone:
+          type: string
+        identification:
+          type: string
+        note:
+          type: string
+        addresses:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+      additionalProperties: true
     Order:
       allOf:
       - type: object
@@ -272,26 +303,6 @@ components:
             type: string
             format: date-time
       - $ref: '#/components/schemas/OrderInput'
-    CustomerInput:
-      type: object
-      properties:
-        name:
-          type: string
-        email:
-          type: string
-          format: email
-        phone:
-          type: string
-        identification:
-          type: string
-        note:
-          type: string
-        addresses:
-          type: array
-          items:
-            type: object
-            additionalProperties: true
-      additionalProperties: true
     OrderInput:
       type: object
       properties:
@@ -323,17 +334,44 @@ components:
         description:
           type: string
       additionalProperties: true
-    Customer:
-      allOf:
-      - type: object
-        properties:
-          id:
+  responses:
+    RateLimited:
+      description: Too many requests - the per-store leaky bucket overflowed. Inspect the x-rate-limit-limit, x-rate-limit-remaining, and x-rate-limit-reset headers and back off.
+      headers:
+        x-rate-limit-limit:
+          schema:
             type: integer
-            format: int64
-          created_at:
-            type: string
-            format: date-time
-      - $ref: '#/components/schemas/CustomerInput'
+          description: Total requests the bucket can hold.
+        x-rate-limit-remaining:
+          schema:
+            type: integer
+          description: Remaining capacity before the bucket fills.
+        x-rate-limit-reset:
+          schema:
+            type: integer
+          description: Milliseconds remaining to completely empty the bucket.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Missing or malformed `Authentication` header, or invalid token.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ValidationError:
+      description: The request payload failed validation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   parameters:
     Page:
       name: page
@@ -360,44 +398,6 @@ components:
       schema:
         type: integer
         format: int64
-  responses:
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    RateLimited:
-      description: Too many requests - the per-store leaky bucket overflowed. Inspect the x-rate-limit-limit, x-rate-limit-remaining, and x-rate-limit-reset headers and back off.
-      headers:
-        x-rate-limit-limit:
-          schema:
-            type: integer
-          description: Total requests the bucket can hold.
-        x-rate-limit-remaining:
-          schema:
-            type: integer
-          description: Remaining capacity before the bucket fills.
-        x-rate-limit-reset:
-          schema:
-            type: integer
-          description: Milliseconds remaining to completely empty the bucket.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Missing or malformed `Authentication` header, or invalid token.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    ValidationError:
-      description: The request payload failed validation.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     authenticationHeader:
       type: apiKey

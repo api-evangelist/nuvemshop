@@ -204,30 +204,6 @@ paths:
           $ref: '#/components/responses/ValidationError'
 components:
   schemas:
-    VariantInput:
-      type: object
-      properties:
-        price:
-          type: string
-        promotional_price:
-          type: string
-        stock:
-          type:
-          - integer
-          - 'null'
-        stock_management:
-          type: boolean
-        sku:
-          type:
-          - string
-          - 'null'
-        weight:
-          type: string
-        values:
-          type: array
-          items:
-            $ref: '#/components/schemas/LocalizedString'
-      additionalProperties: true
     Product:
       allOf:
       - type: object
@@ -268,15 +244,34 @@ components:
           items:
             $ref: '#/components/schemas/ImageInput'
       additionalProperties: true
-    Error:
+    LocalizedString:
+      type: object
+      description: A map of language code to localized text (e.g. {"es":"...","pt":"..."}).
+      additionalProperties:
+        type: string
+    VariantInput:
       type: object
       properties:
-        code:
-          type: integer
-        message:
+        price:
           type: string
-        description:
+        promotional_price:
           type: string
+        stock:
+          type:
+          - integer
+          - 'null'
+        stock_management:
+          type: boolean
+        sku:
+          type:
+          - string
+          - 'null'
+        weight:
+          type: string
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/LocalizedString'
       additionalProperties: true
     ImageInput:
       type: object
@@ -293,11 +288,54 @@ components:
         position:
           type: integer
       additionalProperties: true
-    LocalizedString:
+    Error:
       type: object
-      description: A map of language code to localized text (e.g. {"es":"...","pt":"..."}).
-      additionalProperties:
-        type: string
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        description:
+          type: string
+      additionalProperties: true
+  responses:
+    RateLimited:
+      description: Too many requests - the per-store leaky bucket overflowed. Inspect the x-rate-limit-limit, x-rate-limit-remaining, and x-rate-limit-reset headers and back off.
+      headers:
+        x-rate-limit-limit:
+          schema:
+            type: integer
+          description: Total requests the bucket can hold.
+        x-rate-limit-remaining:
+          schema:
+            type: integer
+          description: Remaining capacity before the bucket fills.
+        x-rate-limit-reset:
+          schema:
+            type: integer
+          description: Milliseconds remaining to completely empty the bucket.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ValidationError:
+      description: The request payload failed validation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Missing or malformed `Authentication` header, or invalid token.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   parameters:
     Page:
       name: page
@@ -324,44 +362,6 @@ components:
       schema:
         type: integer
         format: int64
-  responses:
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    RateLimited:
-      description: Too many requests - the per-store leaky bucket overflowed. Inspect the x-rate-limit-limit, x-rate-limit-remaining, and x-rate-limit-reset headers and back off.
-      headers:
-        x-rate-limit-limit:
-          schema:
-            type: integer
-          description: Total requests the bucket can hold.
-        x-rate-limit-remaining:
-          schema:
-            type: integer
-          description: Remaining capacity before the bucket fills.
-        x-rate-limit-reset:
-          schema:
-            type: integer
-          description: Milliseconds remaining to completely empty the bucket.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Missing or malformed `Authentication` header, or invalid token.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    ValidationError:
-      description: The request payload failed validation.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     authenticationHeader:
       type: apiKey

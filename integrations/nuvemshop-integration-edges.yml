@@ -1,0 +1,18 @@
+generated: '2026-10-12'
+method: none
+source:
+- https://zapier.com/apps/nuvemshop/integrations
+- https://zapier.com/apps/nuvemshop-tiendanube/integrations
+- https://n8n.io/integrations/nuvemshop/
+- https://composio.dev/toolkits/nuvemshop
+- https://monid.ai/tools/nuvemshop
+checked:
+- https://composio.dev/toolkits/nuvemshop
+- https://monid.ai/tools/nuvemshop
+- https://n8n.io/integrations/nuvemshop/
+- https://zapier.com/apps/nuvemshop-tiendanube/integrations
+- https://zapier.com/apps/nuvemshop/integrations
+summary: null
+marketplace_apps: []
+edges: []
+templates: []

@@ -60,11 +60,6 @@ components:
           schema:
             $ref: '#/components/schemas/Error'
   schemas:
-    LocalizedString:
-      type: object
-      description: A map of language code to localized text (e.g. {"es":"...","pt":"..."}).
-      additionalProperties:
-        type: string
     Store:
       type: object
       properties:
@@ -88,6 +83,11 @@ components:
           type: string
           format: email
       additionalProperties: true
+    LocalizedString:
+      type: object
+      description: A map of language code to localized text (e.g. {"es":"...","pt":"..."}).
+      additionalProperties:
+        type: string
     Error:
       type: object
       properties:

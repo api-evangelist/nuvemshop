@@ -130,42 +130,6 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  schemas:
-    ScriptInput:
-      type: object
-      required:
-      - src
-      - event
-      properties:
-        src:
-          type: string
-          format: uri
-          description: URL of the JavaScript file to inject.
-        event:
-          type: string
-          description: When to load the script (e.g. onload).
-        where:
-          type: string
-          description: Where to inject the script (e.g. store, checkout).
-      additionalProperties: true
-    Script:
-      allOf:
-      - type: object
-        properties:
-          id:
-            type: integer
-            format: int64
-      - $ref: '#/components/schemas/ScriptInput'
-    Error:
-      type: object
-      properties:
-        code:
-          type: integer
-        message:
-          type: string
-        description:
-          type: string
-      additionalProperties: true
   responses:
     NotFound:
       description: The requested resource was not found.
@@ -185,6 +149,42 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+  schemas:
+    Script:
+      allOf:
+      - type: object
+        properties:
+          id:
+            type: integer
+            format: int64
+      - $ref: '#/components/schemas/ScriptInput'
+    ScriptInput:
+      type: object
+      required:
+      - src
+      - event
+      properties:
+        src:
+          type: string
+          format: uri
+          description: URL of the JavaScript file to inject.
+        event:
+          type: string
+          description: When to load the script (e.g. onload).
+        where:
+          type: string
+          description: Where to inject the script (e.g. store, checkout).
+      additionalProperties: true
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        description:
+          type: string
+      additionalProperties: true
   parameters:
     Id:
       name: id
